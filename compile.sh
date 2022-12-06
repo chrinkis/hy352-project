@@ -1,5 +1,6 @@
 #!/bin/bash
 
-cd build &&
+mkdir -p build &&
+    cd build &&
     cmake .. &&
     make hy352-project
