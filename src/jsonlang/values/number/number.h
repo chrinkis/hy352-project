@@ -7,7 +7,5 @@ namespace number {
 class Number {};
 
 }  // namespace number
-
 }  // namespace values
-
 }  // namespace jsonlang

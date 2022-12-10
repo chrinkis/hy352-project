@@ -7,7 +7,5 @@ namespace boolean {
 class Boolean {};
 
 }  // namespace boolean
-
 }  // namespace values
-
 }  // namespace jsonlang
