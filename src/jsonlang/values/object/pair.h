@@ -1,11 +1,11 @@
 #pragma once
 
 namespace jsonlang {
-namespace value {
+namespace values {
 namespace object {
 
 class Pair {};
 
 }  // namespace object
-}  // namespace value
+}  // namespace values
 }  // namespace jsonlang
