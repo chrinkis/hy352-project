@@ -1,6 +1,6 @@
 #pragma once
 
-namespace jsolang {
+namespace jsonlang {
 namespace values {
 namespace object {
 
@@ -8,4 +8,4 @@ class Key {};
 
 }  // namespace object
 }  // namespace values
-}  // namespace jsolang
+}  // namespace jsonlang
