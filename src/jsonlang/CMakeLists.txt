@@ -1,0 +1,12 @@
+target_sources(JSONlang
+    PRIVATE
+        variable/variable.cpp
+        values/array/array.cpp
+        values/boolean/boolean.cpp
+        values/null/null.cpp
+        values/number/number.cpp
+        values/object/object.cpp
+        values/object/key.cpp
+        values/object/pair.cpp
+        values/string/string.cpp
+)
