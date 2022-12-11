@@ -1,5 +1,8 @@
 cmake_minimum_required (VERSION 3.24.2)
 
+# For Clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Define the project
 project(hy352-project)
 
