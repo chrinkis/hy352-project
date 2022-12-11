@@ -1,9 +1,8 @@
 #pragma once
 
-namespace jsonlang {
 namespace collections {
 
+template <typename T>
 class Sequence {};
 
 }  // namespace collections
-}  // namespace jsonlang
