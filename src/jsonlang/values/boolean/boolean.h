@@ -9,9 +9,11 @@ namespace boolean {
 class Boolean : public Value {
   bool data;
 
+ private:
+  Boolean(const Boolean& other);
+
  public:
   Boolean(const bool _data);
-  Boolean(const Boolean& other);
 
   Boolean operator&&(const Boolean& other) const;
   Boolean operator||(const Boolean& other) const;

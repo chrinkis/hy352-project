@@ -11,9 +11,11 @@ namespace string {
 class String : public Value {
   std::string data;
 
+ private:
+  String(const String& other);
+
  public:
   String(const std::string& _data);
-  String(const String& other);
 
   String operator+(const String& other) const;
 

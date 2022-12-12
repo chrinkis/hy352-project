@@ -9,9 +9,11 @@ namespace number {
 class Number : public Value {
   float data;
 
+ private:
+  Number(const Number& other);
+
  public:
   Number(const float _data);
-  Number(const Number& other);
 
   Number operator+(const Number& other) const;
   Number operator-(const Number& other) const;
