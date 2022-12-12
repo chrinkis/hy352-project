@@ -4,6 +4,8 @@ using namespace jsonlang::values::string;
 
 String::String(const std::string& _data) : data(_data) {}
 
+String::String(const String& other) : data(other.data) {}
+
 String String::operator+(const String& other) const {
   return String(this->data + other.data);
 }
@@ -26,4 +28,8 @@ const char* String::get_type() const {
 
 String::operator std::string() const {
   return this->data;
+}
+
+String* String::clone_to_heap() const {
+  return new String(*(this));
 }

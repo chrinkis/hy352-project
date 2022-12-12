@@ -13,6 +13,7 @@ class String : public Value {
 
  public:
   String(const std::string& _data);
+  String(const String& other);
 
   String operator+(const String& other) const;
 
@@ -23,6 +24,8 @@ class String : public Value {
   const char* get_type() const;
 
   operator std::string() const;
+
+  String* clone_to_heap() const;
 };
 
 }  // namespace string
