@@ -11,6 +11,7 @@ class Boolean : public Value {
 
  public:
   Boolean(const bool _data);
+  Boolean(const Boolean& other);
 
   Boolean operator&&(const Boolean& other) const;
   Boolean operator||(const Boolean& other) const;
@@ -25,6 +26,8 @@ class Boolean : public Value {
   const char* get_type() const;
 
   operator std::string() const;
+
+  Boolean* clone_to_heap() const;
 };
 
 }  // namespace boolean

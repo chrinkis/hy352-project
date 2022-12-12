@@ -4,6 +4,8 @@ using namespace jsonlang::values::boolean;
 
 Boolean::Boolean(const bool _data) : data(_data) {}
 
+Boolean::Boolean(const Boolean& other) : data(other.data) {}
+
 Boolean Boolean::operator&&(const Boolean& other) const {
   return Boolean(this->data && other.data);
 }
@@ -39,4 +41,8 @@ const char* Boolean::get_type() const {
 
 Boolean::operator std::string() const {
   return (this->data ? "true" : "false");
+}
+
+Boolean* Boolean::clone_to_heap() const {
+  return new Boolean(*(this));
 }
