@@ -22,7 +22,7 @@ Number Number::operator/(const Number& other) const {
 
 Number Number::operator%(const Number& other) const {
   // float numbers do not allow modulo operator ("%").
-  return Number((int)this->data % (int)other.data);
+  return Number(static_cast<int>(this->data) % static_cast<int>(other.data));
 }
 
 bool Number::operator>(const Number& other) const {
