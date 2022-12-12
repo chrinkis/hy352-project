@@ -11,6 +11,7 @@ class Number : public Value {
 
  public:
   Number(const float _data);
+  Number(const Number& other);
 
   Number operator+(const Number& other) const;
   Number operator-(const Number& other) const;
@@ -31,6 +32,8 @@ class Number : public Value {
   const char* get_type() const;
 
   operator std::string() const;
+
+  Number* clone_to_heap() const;
 };
 
 }  // namespace number

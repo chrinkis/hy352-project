@@ -5,6 +5,8 @@ using namespace jsonlang::values::number;
 
 Number::Number(const float _data) : data(_data) {}
 
+Number::Number(const Number& other) : data(other.data) {}
+
 Number Number::operator+(const Number& other) const {
   return Number(this->data + other.data);
 }
@@ -67,4 +69,8 @@ const char* Number::get_type() const {
 
 Number::operator std::string() const {
   return std::to_string(this->data);
+}
+
+Number* Number::clone_to_heap() const {
+  return new Number(*(this));
 }
