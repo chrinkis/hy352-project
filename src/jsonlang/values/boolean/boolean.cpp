@@ -44,5 +44,5 @@ Boolean::operator std::string() const {
 }
 
 Boolean* Boolean::clone_to_heap() const {
-  return new Boolean(*(this));
+  return new Boolean(*this);
 }

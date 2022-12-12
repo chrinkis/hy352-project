@@ -72,5 +72,5 @@ Number::operator std::string() const {
 }
 
 Number* Number::clone_to_heap() const {
-  return new Number(*(this));
+  return new Number(*this);
 }

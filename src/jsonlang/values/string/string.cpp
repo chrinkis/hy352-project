@@ -31,5 +31,5 @@ String::operator std::string() const {
 }
 
 String* String::clone_to_heap() const {
-  return new String(*(this));
+  return new String(*this);
 }
