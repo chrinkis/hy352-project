@@ -41,6 +41,14 @@ bool Number::operator<=(const Number& other) const {
   return (this->data <= other.data);
 }
 
+bool Number::operator==(const Number& other) const {
+  return (this->data == other.data);
+}
+
+bool Number::operator!=(const Number& other) const {
+  return (this->data != other.data);
+}
+
 int Number::get_size() const {
   return 1;
 }

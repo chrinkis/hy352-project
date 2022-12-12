@@ -21,6 +21,8 @@ class Number : public Value {
   bool operator>=(const Number& other) const;
   bool operator<(const Number& other) const;
   bool operator<=(const Number& other) const;
+  bool operator==(const Number& other) const;
+  bool operator!=(const Number& other) const;
 
  public:
   int get_size() const;
