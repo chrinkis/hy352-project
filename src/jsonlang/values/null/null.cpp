@@ -1,1 +1,31 @@
 #include "null.h"
+
+using namespace jsonlang::values::null;
+
+bool Null::operator==(const Null& other) const {
+  return true;
+}
+
+bool Null::operator!=(const Null& other) const {
+  return false;
+}
+
+int Null::get_size() const {
+  return 1;
+}
+
+bool Null::is_emtpy() const {
+  return false;
+}
+
+bool Null::has_key(const std::string& key) const {
+  return false;
+}
+
+const char* Null::get_type() const {
+  return "null";
+}
+
+Null::operator std::string() const {
+  return "Null";
+}
