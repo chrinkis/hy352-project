@@ -7,6 +7,5 @@ target_sources(JSONlang
         values/number/number.cpp
         values/object/object.cpp
         values/object/key.cpp
-        values/object/pair.cpp
         values/string/string.cpp
 )
