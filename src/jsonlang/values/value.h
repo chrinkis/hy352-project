@@ -13,6 +13,8 @@ class Value {
   virtual const char* get_type() const = 0;
 
   virtual operator std::string() const = 0;
+
+  virtual Value* clone_to_heap() const = 0;
 };
 
 }  // namespace values
