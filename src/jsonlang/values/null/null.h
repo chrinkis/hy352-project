@@ -12,6 +12,8 @@ class Null : public Value {
   Null(const Null& other);
 
  public:
+  Null();
+
   bool operator==(const Null& other) const;
   bool operator!=(const Null& other) const;
 

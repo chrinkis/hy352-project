@@ -4,6 +4,8 @@
 
 using namespace jsonlang::values::null;
 
+Null::Null() {}
+
 Null::Null(const Null& other) {}
 
 bool Null::operator==(const Null& other) const {
