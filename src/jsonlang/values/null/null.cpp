@@ -2,6 +2,8 @@
 
 using namespace jsonlang::values::null;
 
+Null::Null(const Null& other) {}
+
 bool Null::operator==(const Null& other) const {
   return true;
 }
@@ -28,4 +30,8 @@ const char* Null::get_type() const {
 
 Null::operator std::string() const {
   return "Null";
+}
+
+Null* Null::clone_to_heap() const {
+  return new Null(*this);
 }
