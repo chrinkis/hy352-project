@@ -52,13 +52,14 @@ Value& Array::operator[](const int index) const {
 }
 
 Array Array::operator+(const Array& other) const {
-  Array sum_of_arrays(*this);
+  Array first = Array(*this);
+  Array second = Array(other);
 
-  for (auto current_value : other.data) {
-    sum_of_arrays.data.push_back(current_value);
+  for (auto current_value : second.data) {
+    first.data.push_back(current_value);
   }
 
-  return sum_of_arrays;
+  return first;
 }
 
 // TODO:
