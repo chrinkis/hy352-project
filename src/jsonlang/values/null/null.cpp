@@ -1,5 +1,7 @@
 #include "null.h"
 
+#include <cassert>
+
 using namespace jsonlang::values::null;
 
 Null::Null(const Null& other) {}
@@ -34,4 +36,8 @@ Null::operator std::string() const {
 
 Null* Null::clone_to_heap() const {
   return new Null(*this);
+}
+
+Null::Null(std::nullptr_t null) {
+  assert(0);
 }

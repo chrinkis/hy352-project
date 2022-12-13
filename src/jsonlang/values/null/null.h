@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include "../value.h"
 
 namespace jsonlang {
@@ -23,6 +24,9 @@ class Null : public Value {
   operator std::string() const;
 
   Null* clone_to_heap() const;
+
+ public:
+  Null(std::nullptr_t null);
 };
 
 }  // namespace null
