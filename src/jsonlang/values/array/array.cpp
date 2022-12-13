@@ -47,11 +47,12 @@ Value& Array::operator[](const int index) const {
   return *this->data[index];
 }
 
-Array Array::operator+(const Array& other) {
+Array Array::operator+(const Array& other) const {
+  Array sum_array{*this};
   for (auto current_value : other.data) {
-    this->data.push_back(current_value);
+    sum_array.data.push_back(current_value);
   }
-  return *this;
+  return sum_array;
 }
 
 // TODO:

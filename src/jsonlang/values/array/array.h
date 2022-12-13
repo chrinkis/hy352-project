@@ -28,7 +28,7 @@ class Array : public Value {
   Array operator[](
       collections::Sequence<std::shared_ptr<Value> >& data_sequence);
   Value& operator[](const int index) const;
-  Array operator+(const Array& other);
+  Array operator+(const Array& other) const;
   bool operator==(const Array& other) const;
   bool operator!=(const Array& other) const;
 
