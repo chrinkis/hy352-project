@@ -9,6 +9,7 @@ collections::Sequence<std::shared_ptr<jsonlang::values::Value> >& operator,(
     const jsonlang::values::Value& val) {
   auto value_clone = val.clone_to_heap();
   std::shared_ptr<jsonlang::values::Value> value_clone_shared_ptr(value_clone);
+
   return (seq, value_clone_shared_ptr);
 }
 
@@ -29,6 +30,7 @@ Array Array::operator[](const Value& single_data) {
   auto data_clone = single_data.clone_to_heap();
   std::shared_ptr<jsonlang::values::Value> data_clone_shared_ptr(data_clone);
   this->data.push_back(data_clone_shared_ptr);
+
   return *this;
 }
 
@@ -38,21 +40,25 @@ Array Array::operator[](
   for (auto current_value : data_sequence) {
     this->data.push_back(current_value);
   }
+
   return *this;
 }
 
 Value& Array::operator[](const int index) const {
   assert(index >= 0);
   assert(index < this->get_size());
+
   return *this->data[index];
 }
 
 Array Array::operator+(const Array& other) const {
-  Array sum_array{*this};
+  Array sum_of_arrays(*this);
+
   for (auto current_value : other.data) {
-    sum_array.data.push_back(current_value);
+    sum_of_arrays.data.push_back(current_value);
   }
-  return sum_array;
+
+  return sum_of_arrays;
 }
 
 // TODO:
