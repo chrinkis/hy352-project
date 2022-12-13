@@ -1,4 +1,6 @@
 #include "number.h"
+
+#include <cassert>
 #include <string>
 
 using namespace jsonlang::values::number;
@@ -73,4 +75,8 @@ Number::operator std::string() const {
 
 Number* Number::clone_to_heap() const {
   return new Number(*this);
+}
+
+Number::Number(std::nullptr_t null) {
+  assert(0);
 }

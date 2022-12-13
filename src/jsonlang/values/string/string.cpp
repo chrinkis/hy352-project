@@ -1,5 +1,7 @@
 #include "string.h"
 
+#include <cassert>
+
 using namespace jsonlang::values::string;
 
 String::String(const std::string& _data) : data(_data) {}
@@ -32,4 +34,8 @@ String::operator std::string() const {
 
 String* String::clone_to_heap() const {
   return new String(*this);
+}
+
+String::String(std::nullptr_t null) {
+  assert(0);
 }
