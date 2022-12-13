@@ -29,6 +29,7 @@ class Object : public Value {
   Object(std::initializer_list<Pair>);
 
   Value& operator[](const std::string& key);
+  Object operator+(const Object& other) const;
 
  public:
   int get_size() const;

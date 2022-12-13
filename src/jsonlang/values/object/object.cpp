@@ -33,6 +33,17 @@ Value& Object::operator[](const std::string& key) {
   return *resoult;
 }
 
+Object Object::operator+(const Object& other) const {
+  Object first = Object(*this);
+  Object second = Object(other);
+
+  for (auto pair : second.data) {
+    first.data[pair.first] = pair.second;
+  }
+
+  return first;
+}
+
 int Object::get_size() const {
   return this->data.size();
 }
