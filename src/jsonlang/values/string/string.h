@@ -2,6 +2,7 @@
 
 #include "../value.h"
 
+#include <cstddef>
 #include <string>
 
 namespace jsonlang {
@@ -28,6 +29,9 @@ class String : public Value {
   operator std::string() const;
 
   String* clone_to_heap() const;
+
+ public:
+  String(std::nullptr_t null);
 };
 
 }  // namespace string

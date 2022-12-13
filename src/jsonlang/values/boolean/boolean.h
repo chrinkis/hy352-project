@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include "../value.h"
 
 namespace jsonlang {
@@ -30,6 +31,9 @@ class Boolean : public Value {
   operator std::string() const;
 
   Boolean* clone_to_heap() const;
+
+ public:
+  Boolean(std::nullptr_t null);
 };
 
 }  // namespace boolean

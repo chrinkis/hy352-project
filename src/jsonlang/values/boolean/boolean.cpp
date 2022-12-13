@@ -1,5 +1,7 @@
 #include "boolean.h"
 
+#include <cassert>
+
 using namespace jsonlang::values::boolean;
 
 Boolean::Boolean(const bool _data) : data(_data) {}
@@ -45,4 +47,8 @@ Boolean::operator std::string() const {
 
 Boolean* Boolean::clone_to_heap() const {
   return new Boolean(*this);
+}
+
+Boolean::Boolean(std::nullptr_t null) {
+  assert(0);
 }
