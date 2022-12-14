@@ -4,13 +4,6 @@
 #include <memory>
 #include <vector>
 
-Sequence_of_ValuePtrs& operator,(Sequence_of_ValuePtrs& seq, const Value& val) {
-  auto value_clone = val.clone_to_heap();
-  ValuePtr value_clone_shared_ptr(value_clone);
-
-  return (seq, value_clone_shared_ptr);
-}
-
 using namespace jsonlang::values;
 using namespace jsonlang::values::array;
 
@@ -108,4 +101,12 @@ Array* Array::clone_to_heap() const {
 
 Array::Array(std::nullptr_t null) {
   assert(0);
+}
+
+collections::Sequence<std::shared_ptr<Value> >& operator,(
+    collections::Sequence<std::shared_ptr<Value> >& seq,
+    const Value& val) {
+  std::shared_ptr<Value> value_clone_shared_ptr(val.clone_to_heap());
+
+  return (seq, value_clone_shared_ptr);
 }

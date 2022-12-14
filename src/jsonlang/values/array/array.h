@@ -6,17 +6,16 @@
 #include <memory>
 #include <vector>
 
-using Value = jsonlang::values::Value;
-using ValuePtr = std::shared_ptr<Value>;
-using Sequence_of_ValuePtrs = collections::Sequence<ValuePtr>;
-
-Sequence_of_ValuePtrs& operator,(Sequence_of_ValuePtrs& seq, const Value& val);
-
 namespace jsonlang {
 namespace values {
 namespace array {
 
 class Array : public Value {
+ public:
+  using ValuePtr = std::shared_ptr<Value>;
+  using Sequence_of_ValuePtrs = collections::Sequence<ValuePtr>;
+
+ private:
   std::vector<ValuePtr> data;
 
  private:
@@ -50,3 +49,7 @@ class Array : public Value {
 }  // namespace array
 }  // namespace values
 }  // namespace jsonlang
+
+collections::Sequence<std::shared_ptr<jsonlang::values::Value> >& operator,(
+    collections::Sequence<std::shared_ptr<jsonlang::values::Value> >& seq,
+    const jsonlang::values::Value& val);
