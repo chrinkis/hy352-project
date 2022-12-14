@@ -77,6 +77,16 @@ Number* Number::clone_to_heap() const {
   return new Number(*this);
 }
 
+bool Number::is_equal_to(const Value& other) const {
+  const Number* other_number = dynamic_cast<const Number*>(&other);
+
+  if (!other_number) {
+    return false;
+  }
+
+  return this->data == other_number->data;
+}
+
 Number::Number(std::nullptr_t null) {
   assert(0);
 }
