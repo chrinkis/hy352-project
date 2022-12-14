@@ -15,6 +15,7 @@ class Value {
   virtual operator std::string() const = 0;
 
   virtual Value* clone_to_heap() const = 0;
+  virtual bool is_equal_to(const Value& other) const = 0;
 };
 
 }  // namespace values
