@@ -15,6 +15,10 @@ namespace values {
 namespace array {
 
 class Array : public Value {
+ public:
+  using ValuePtr = std::shared_ptr<Value>;
+  using Sequence_of_ValuePtrs = collections::Sequence<ValuePtr>;
+
   std::vector<std::shared_ptr<Value> > data;
 
  private:
@@ -25,8 +29,7 @@ class Array : public Value {
 
   Array operator[](const Value& single_data);
   // should be const
-  Array operator[](
-      collections::Sequence<std::shared_ptr<Value> >& data_sequence);
+  Array operator[](Sequence_of_ValuePtrs& data_sequence);
   Value& operator[](const int index) const;
   Array operator+(const Array& other) const;
   bool operator==(const Array& other) const;

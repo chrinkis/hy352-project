@@ -19,7 +19,7 @@ using namespace jsonlang::values::array;
 Array::Array(const Array& other) {
   for (auto current_value : other.data) {
     auto current_value_clone = current_value->clone_to_heap();
-    std::shared_ptr<Value> current_value_clone_shared_ptr(current_value_clone);
+    ValuePtr current_value_clone_shared_ptr(current_value_clone);
     this->data.push_back(current_value_clone_shared_ptr);
   }
 }
@@ -28,15 +28,14 @@ Array::Array() : data(std::vector<std::shared_ptr<Value> >()) {}
 
 Array Array::operator[](const Value& single_data) {
   auto data_clone = single_data.clone_to_heap();
-  std::shared_ptr<jsonlang::values::Value> data_clone_shared_ptr(data_clone);
+  ValuePtr data_clone_shared_ptr(data_clone);
   this->data.push_back(data_clone_shared_ptr);
 
   return *this;
 }
 
 // should be const
-Array Array::operator[](
-    collections::Sequence<std::shared_ptr<Value> >& data_sequence) {
+Array Array::operator[](Sequence_of_ValuePtrs& data_sequence) {
   for (auto current_value : data_sequence) {
     this->data.push_back(current_value);
   }
