@@ -4,11 +4,9 @@
 #include <memory>
 #include <vector>
 
-collections::Sequence<std::shared_ptr<jsonlang::values::Value> >& operator,(
-    collections::Sequence<std::shared_ptr<jsonlang::values::Value> >& seq,
-    const jsonlang::values::Value& val) {
+Sequence_of_ValuePtrs& operator,(Sequence_of_ValuePtrs& seq, const Value& val) {
   auto value_clone = val.clone_to_heap();
-  std::shared_ptr<jsonlang::values::Value> value_clone_shared_ptr(value_clone);
+  ValuePtr value_clone_shared_ptr(value_clone);
 
   return (seq, value_clone_shared_ptr);
 }
@@ -24,7 +22,7 @@ Array::Array(const Array& other) {
   }
 }
 
-Array::Array() : data(std::vector<std::shared_ptr<Value> >()) {}
+Array::Array() : data(std::vector<ValuePtr>()) {}
 
 Array Array::operator[](const Value& single_data) {
   auto data_clone = single_data.clone_to_heap();
