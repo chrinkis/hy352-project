@@ -36,6 +36,16 @@ String* String::clone_to_heap() const {
   return new String(*this);
 }
 
+bool String::is_equal_to(const Value& other) const {
+  const String* other_string = dynamic_cast<const String*>(&other);
+
+  if (!other_string) {
+    return false;
+  }
+
+  return this->data == other_string->data;
+}
+
 String::String(std::nullptr_t null) {
   assert(0);
 }
