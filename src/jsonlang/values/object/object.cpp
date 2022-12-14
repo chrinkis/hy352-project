@@ -26,11 +26,11 @@ Object::Object(const Object& other) {
 }
 
 Value& Object::operator[](const std::string& key) {
-  auto resoult = this->data[Object::Key(key)];
+  auto result = this->data[Object::Key(key)];
 
-  assert(resoult);
+  assert(result);
 
-  return *resoult;
+  return *result;
 }
 
 Object Object::operator+(const Object& other) const {
@@ -63,18 +63,18 @@ const char* Object::get_type() const {
 }
 
 Object::operator std::string() const {
-  std::string resoult = "{";
+  std::string result = "{";
 
   for (auto pair : this->data) {
-    resoult += pair.first.get_key();
-    resoult += ": ";
-    resoult += std::string(*pair.second);
-    resoult += ", ";
+    result += pair.first.get_key();
+    result += ": ";
+    result += std::string(*pair.second);
+    result += ", ";
   }
 
-  resoult += "}";
+  result += "}";
 
-  return resoult;
+  return result;
 }
 
 Value* Object::clone_to_heap() const {
