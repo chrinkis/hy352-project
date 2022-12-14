@@ -103,10 +103,9 @@ Array::Array(std::nullptr_t null) {
   assert(0);
 }
 
-collections::Sequence<std::shared_ptr<Value> >& operator,(
-    collections::Sequence<std::shared_ptr<Value> >& seq,
-    const Value& val) {
-  std::shared_ptr<Value> value_clone_shared_ptr(val.clone_to_heap());
+Array::Sequence_of_ValuePtrs& operator,(Array::Sequence_of_ValuePtrs& seq,
+                                        const jsonlang::values::Value& val) {
+  Array::ValuePtr value_clone_shared_ptr(val.clone_to_heap());
 
   return (seq, value_clone_shared_ptr);
 }

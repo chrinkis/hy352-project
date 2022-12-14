@@ -50,6 +50,6 @@ class Array : public Value {
 }  // namespace values
 }  // namespace jsonlang
 
-collections::Sequence<std::shared_ptr<jsonlang::values::Value> >& operator,(
-    collections::Sequence<std::shared_ptr<jsonlang::values::Value> >& seq,
+jsonlang::values::array::Array::Sequence_of_ValuePtrs& operator,(
+    jsonlang::values::array::Array::Sequence_of_ValuePtrs& seq,
     const jsonlang::values::Value& val);
