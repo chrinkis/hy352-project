@@ -13,7 +13,7 @@ namespace array {
 class Array : public Value {
  public:
   using ValuePtr = std::shared_ptr<Value>;
-  using Sequence_of_ValuePtrs = collections::Sequence<ValuePtr>;
+  using ValuePtrSequence = collections::Sequence<ValuePtr>;
 
  private:
   std::vector<ValuePtr> data;
@@ -26,7 +26,7 @@ class Array : public Value {
 
   Array operator[](const Value& single_data);
   // should be const
-  Array operator[](Sequence_of_ValuePtrs& data_sequence);
+  Array operator[](ValuePtrSequence& data_sequence);
   Value& operator[](const int index) const;
   Array operator+(const Array& other) const;
   bool operator==(const Array& other) const;
@@ -50,6 +50,6 @@ class Array : public Value {
 }  // namespace values
 }  // namespace jsonlang
 
-jsonlang::values::array::Array::Sequence_of_ValuePtrs& operator,(
-    jsonlang::values::array::Array::Sequence_of_ValuePtrs& seq,
+jsonlang::values::array::Array::ValuePtrSequence& operator,(
+    jsonlang::values::array::Array::ValuePtrSequence& seq,
     const jsonlang::values::Value& val);

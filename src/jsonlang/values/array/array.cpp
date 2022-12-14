@@ -26,7 +26,7 @@ Array Array::operator[](const Value& single_data) {
 }
 
 // should be const
-Array Array::operator[](Sequence_of_ValuePtrs& data_sequence) {
+Array Array::operator[](ValuePtrSequence& data_sequence) {
   for (auto current_value : data_sequence) {
     this->data.push_back(current_value);
   }
@@ -37,6 +37,7 @@ Array Array::operator[](Sequence_of_ValuePtrs& data_sequence) {
 Value& Array::operator[](const int index) const {
   assert(index >= 0);
   assert(index < this->get_size());
+  assert(this->get_size() == this->data.size());
 
   return *this->data[index];
 }
@@ -103,8 +104,8 @@ Array::Array(std::nullptr_t null) {
   assert(0);
 }
 
-Array::Sequence_of_ValuePtrs& operator,(Array::Sequence_of_ValuePtrs& seq,
-                                        const jsonlang::values::Value& val) {
+Array::ValuePtrSequence& operator,(Array::ValuePtrSequence& seq,
+                                   const jsonlang::values::Value& val) {
   Array::ValuePtr value_clone_shared_ptr(val.clone_to_heap());
 
   return (seq, value_clone_shared_ptr);
