@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 
 using namespace jsonlang::values;
@@ -79,6 +80,36 @@ Object::operator std::string() const {
 
 Value* Object::clone_to_heap() const {
   return new Object(*this);
+}
+
+bool Object::is_equal_to(const Value& other) const {
+  const Object* other_object = dynamic_cast<const Object*>(&other);
+
+  if (!other_object) {
+    return false;
+  }
+
+  if (this->data.size() != other_object->data.size()) {
+    return false;
+  }
+
+  for (auto pair : this->data) {
+    Key key = pair.first;
+    ValuePtr value = pair.second;
+    ValuePtr other_value;
+
+    try {
+      other_value = other_object->data.at(key);
+    } catch (std::out_of_range& out_of_range) {
+      return false;
+    }
+
+    if (!other_value->is_equal_to(*value)) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 Object::Object(std::nullptr_t null) {
