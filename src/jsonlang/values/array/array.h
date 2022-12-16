@@ -41,6 +41,7 @@ class Array : public Value {
   operator std::string() const;
 
   Array* clone_to_heap() const;
+  bool is_equal_to(const Value& other) const;
 
  public:
   Array(std::nullptr_t null);

@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <memory>
+#include <stdexcept>
 #include <vector>
 
 using namespace jsonlang::values;
@@ -55,14 +56,15 @@ Array Array::operator+(const Array& other) const {
 
 // TODO:
 bool Array::operator==(const Array& other) const {
-  if (this->get_size() != other.get_size())
+  /*if (this->get_size() != other.get_size())
     return false;
 
   for (int current_index = 0; current_index < this->get_size(); current_index++)
-    // if (*this->data[current_index] != *other.data[current_index])
+     if (*this->data[current_index] != *other.data[current_index])
     return false;
+        */
 
-  return true;
+  return this->is_equal_to(other);
 }
 
 bool Array::operator!=(const Array& other) const {
@@ -102,6 +104,36 @@ Array* Array::clone_to_heap() const {
 
 Array::Array(std::nullptr_t null) {
   assert(0);
+}
+
+bool Array::is_equal_to(const Value& other) const {
+  const Array* other_array = dynamic_cast<const Array*>(&other);
+
+  if (!other_array) {
+    return false;
+  }
+
+  if (this->get_size() != other_array->get_size()) {
+    return false;
+  }
+
+  for (int current_index = 0; current_index < this->get_size();
+       current_index++) {
+    ValuePtr value = this->data.at(current_index);
+    ValuePtr other_value;
+
+    try {
+      other_value = other_array->data.at(current_index);
+    } catch (std::out_of_range& out_of_range) {
+      return false;
+    }
+
+    if (!other_value->is_equal_to(*value)) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 Array::ValuePtrSequence& operator,(Array::ValuePtrSequence& seq,
