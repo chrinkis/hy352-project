@@ -40,6 +40,10 @@ Null* Null::clone_to_heap() const {
   return new Null(*this);
 }
 
+bool Null::is_equal_to(const Value& other) const {
+  return dynamic_cast<const Null*>(&other);
+}
+
 Null::Null(std::nullptr_t null) {
   assert(0);
 }

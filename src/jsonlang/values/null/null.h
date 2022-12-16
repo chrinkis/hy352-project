@@ -26,6 +26,7 @@ class Null : public Value {
   operator std::string() const;
 
   Null* clone_to_heap() const;
+  bool is_equal_to(const Value& other) const;
 
  public:
   Null(std::nullptr_t null);
