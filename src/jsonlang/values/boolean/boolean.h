@@ -31,6 +31,7 @@ class Boolean : public Value {
   operator std::string() const;
 
   Boolean* clone_to_heap() const;
+  bool is_equal_to(const Value& other) const;
 
  public:
   Boolean(std::nullptr_t null);
