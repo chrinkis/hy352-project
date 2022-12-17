@@ -24,3 +24,12 @@ set_target_properties(JSONlang PROPERTIES
 # Add definition for the binary
 add_executable(hy352-project src/main.cpp)
 target_link_libraries(hy352-project JSONlang)
+
+set(BUILD_TESTING ON)
+
+# Unit Tests
+if(EXISTS "${PROJECT_SOURCE_DIR}/lib/Catch2")
+    add_subdirectory(lib/Catch2)
+    add_executable(tests test/test.cpp)
+    target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+endif()

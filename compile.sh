@@ -1,5 +1,15 @@
 #!/bin/bash
 
+if [[ $1 = "-t" ]]; then
+    mkdir -p build &&
+        cd build &&
+        cmake .. &&
+        make tests &&
+        ./tests
+
+        exit
+fi
+
 mkdir -p build &&
     cd build &&
     cmake .. &&
