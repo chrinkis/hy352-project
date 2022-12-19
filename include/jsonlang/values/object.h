@@ -1,13 +1,13 @@
 #pragma once
 
-#include "../value.h"
+#include <jsonlang/values/value.h>
 
 #include <cstddef>
 #include <map>
 #include <memory>
 
-#include "key.h"
-#include "pair.h"
+#include <jsonlang/collections/pair.h>
+#include <jsonlang/values/object/key.h>
 
 namespace jsonlang {
 namespace values {

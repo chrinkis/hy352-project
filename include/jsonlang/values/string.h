@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../value.h"
+#include <jsonlang/values/value.h>
 
 #include <cstddef>
 #include <string>

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../value.h"
+#include <jsonlang/values/value.h>
 
-#include <sequence.h>
+#include <jsonlang/collections/sequence.h>
 #include <memory>
 #include <vector>
 

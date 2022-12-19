@@ -1,7 +1,7 @@
 #pragma once
 
+#include <jsonlang/values/value.h>
 #include <cstddef>
-#include "../value.h"
 
 namespace jsonlang {
 namespace values {

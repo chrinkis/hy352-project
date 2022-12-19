@@ -8,17 +8,19 @@ project(hy352-project)
 
 # Define the library
 add_library(JSONlang "")
-add_subdirectory(src/jsonlang)
-target_include_directories(JSONlang PRIVATE src/collections)
+add_subdirectory(src)
+target_include_directories(JSONlang
+    PRIVATE
+        include             # for header files
+        include/jsonlang    # to skip `jsonlang` prefix in `src` dir
+)
 set_target_properties(JSONlang PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/jsonlang"
+  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/include"
 )
 
 # Add definition for the binary
-add_executable(hy352-project src/main.cpp)
+add_executable(hy352-project test/main.cpp)
 target_link_libraries(hy352-project JSONlang)
-
-set(BUILD_TESTING ON)
 
 # Unit Tests
 if(EXISTS "${PROJECT_SOURCE_DIR}/lib/Catch2")
