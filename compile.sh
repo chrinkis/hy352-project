@@ -18,8 +18,8 @@ mkdir -p build &&
 STATUS=$?
 
 if [[ $1 = "-p" ]]; then
-    make src/main.cpp.i && 
-        less CMakeFiles/hy352-project.dir/src/main.cpp.i
+    make test/main.cpp.i &&
+        less CMakeFiles/hy352-project.dir/test/main.cpp.i
 fi
 
 if [[ $STATUS -eq 0 && $1 = "-r" ]]; then
