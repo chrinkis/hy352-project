@@ -8,7 +8,6 @@
 
 namespace jsonlang {
 namespace values {
-namespace array {
 
 class Array : public Value {
  public:
@@ -47,10 +46,9 @@ class Array : public Value {
   Array(std::nullptr_t null);
 };
 
-}  // namespace array
 }  // namespace values
 }  // namespace jsonlang
 
-jsonlang::values::array::Array::ValuePtrSequence& operator,(
-    jsonlang::values::array::Array::ValuePtrSequence& seq,
+jsonlang::values::Array::ValuePtrSequence& operator,(
+    jsonlang::values::Array::ValuePtrSequence& seq,
     const jsonlang::values::Value& val);

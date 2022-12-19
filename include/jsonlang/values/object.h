@@ -11,7 +11,6 @@
 
 namespace jsonlang {
 namespace values {
-namespace object {
 
 class Object : public Value {
  public:
@@ -46,10 +45,9 @@ class Object : public Value {
   Object(std::nullptr_t null);
 };
 
-}  // namespace object
 }  // namespace values
 }  // namespace jsonlang
 
-jsonlang::values::object::Object::Pair operator<<=(
-    const jsonlang::values::object::Object::Key& key,
+jsonlang::values::Object::Pair operator<<=(
+    const jsonlang::values::Object::Key& key,
     const jsonlang::values::Value& value);

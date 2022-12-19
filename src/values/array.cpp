@@ -6,7 +6,6 @@
 #include <vector>
 
 using namespace jsonlang::values;
-using namespace jsonlang::values::array;
 
 Array::Array(const Array& other) {
   for (auto current_value : other.data) {

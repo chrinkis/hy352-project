@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-using namespace jsonlang::values::boolean;
+using namespace jsonlang::values;
 
 Boolean::Boolean(const bool _data) : data(_data) {}
 

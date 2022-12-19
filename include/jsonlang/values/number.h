@@ -5,7 +5,6 @@
 
 namespace jsonlang {
 namespace values {
-namespace number {
 
 class Number : public Value {
   float data;
@@ -43,6 +42,5 @@ class Number : public Value {
   Number(std::nullptr_t null);
 };
 
-}  // namespace number
 }  // namespace values
 }  // namespace jsonlang

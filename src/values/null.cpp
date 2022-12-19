@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-using namespace jsonlang::values::null;
+using namespace jsonlang::values;
 
 Null::Null() {}
 

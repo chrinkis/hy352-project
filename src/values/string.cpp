@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-using namespace jsonlang::values::string;
+using namespace jsonlang::values;
 
 String::String(const std::string& _data) : data(_data) {}
 

@@ -7,7 +7,6 @@
 
 namespace jsonlang {
 namespace values {
-namespace string {
 
 class String : public Value {
   std::string data;
@@ -35,6 +34,5 @@ class String : public Value {
   String(std::nullptr_t null);
 };
 
-}  // namespace string
 }  // namespace values
 }  // namespace jsonlang

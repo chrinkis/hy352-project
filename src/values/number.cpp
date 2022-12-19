@@ -3,7 +3,7 @@
 #include <cassert>
 #include <string>
 
-using namespace jsonlang::values::number;
+using namespace jsonlang::values;
 
 Number::Number(const float _data) : data(_data) {}
 

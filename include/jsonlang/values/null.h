@@ -5,7 +5,6 @@
 
 namespace jsonlang {
 namespace values {
-namespace null {
 
 class Null : public Value {
  private:
@@ -32,6 +31,5 @@ class Null : public Value {
   Null(std::nullptr_t null);
 };
 
-}  // namespace null
 }  // namespace values
 }  // namespace jsonlang

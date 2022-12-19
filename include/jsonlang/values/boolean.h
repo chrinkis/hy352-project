@@ -5,7 +5,6 @@
 
 namespace jsonlang {
 namespace values {
-namespace boolean {
 
 class Boolean : public Value {
   bool data;
@@ -37,6 +36,5 @@ class Boolean : public Value {
   Boolean(std::nullptr_t null);
 };
 
-}  // namespace boolean
 }  // namespace values
 }  // namespace jsonlang

@@ -6,7 +6,6 @@
 #include <string>
 
 using namespace jsonlang::values;
-using namespace jsonlang::values::object;
 
 Object::Object(std::initializer_list<Pair> pairs) {
   for (Object::Pair pair : pairs) {
