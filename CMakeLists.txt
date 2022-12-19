@@ -6,17 +6,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Define the project
 project(hy352-project)
 
-# Define Collections library
-add_library(Collections "")
-add_subdirectory(src/collections)
-set_target_properties(Collections PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/collections"
-)
-
 # Define the library
 add_library(JSONlang "")
 add_subdirectory(src/jsonlang)
-target_link_libraries(JSONlang Collections)
+target_include_directories(JSONlang PRIVATE src/collections)
 set_target_properties(JSONlang PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/src/jsonlang"
 )
