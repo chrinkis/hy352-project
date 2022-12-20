@@ -2,7 +2,6 @@
 
 #include <jsonlang/values/value.h>
 
-#include <cstddef>
 #include <map>
 #include <memory>
 
@@ -42,7 +41,7 @@ class Object : public Value {
   bool is_equal_to(const Value& other) const;
 
  public:
-  Object(std::nullptr_t null);
+  Object(Value::Void);
 };
 
 }  // namespace values

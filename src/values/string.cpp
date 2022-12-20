@@ -46,6 +46,6 @@ bool String::is_equal_to(const Value& other) const {
   return this->data == other_string->data;
 }
 
-String::String(std::nullptr_t null) {
+String::String(Value::Void) {
   assert(0);
 }

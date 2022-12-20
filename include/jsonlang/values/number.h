@@ -1,7 +1,6 @@
 #pragma once
 
 #include <jsonlang/values/value.h>
-#include <cstddef>
 
 namespace jsonlang {
 namespace values {
@@ -39,7 +38,7 @@ class Number : public Value {
   bool is_equal_to(const Value& other) const;
 
  public:
-  Number(std::nullptr_t null);
+  Number(Value::Void);
 };
 
 }  // namespace values

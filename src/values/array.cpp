@@ -101,7 +101,7 @@ Array* Array::clone_to_heap() const {
   return new Array(*this);
 }
 
-Array::Array(std::nullptr_t null) {
+Array::Array(Value::Void) {
   assert(0);
 }
 

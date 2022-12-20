@@ -87,6 +87,6 @@ bool Number::is_equal_to(const Value& other) const {
   return this->data == other_number->data;
 }
 
-Number::Number(std::nullptr_t null) {
+Number::Number(Value::Void) {
   assert(0);
 }

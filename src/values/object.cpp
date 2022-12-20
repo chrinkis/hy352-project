@@ -111,7 +111,7 @@ bool Object::is_equal_to(const Value& other) const {
   return true;
 }
 
-Object::Object(std::nullptr_t null) {
+Object::Object(Value::Void) {
   assert(0);
 }
 

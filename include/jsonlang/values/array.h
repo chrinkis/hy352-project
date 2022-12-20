@@ -43,7 +43,7 @@ class Array : public Value {
   bool is_equal_to(const Value& other) const;
 
  public:
-  Array(std::nullptr_t null);
+  Array(Value::Void);
 };
 
 }  // namespace values

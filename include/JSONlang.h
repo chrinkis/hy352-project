@@ -19,6 +19,8 @@
 #define NULL jsonlang::values::Null()
 
 #define OBJECT jsonlang::values::Object
-#define KEY(X) jsonlang::values::object::Key(STR(X)) <<= (false) ? (nullptr)
+#define KEY(X)                              \
+  jsonlang::values::object::Key(STR(X)) <<= \
+      (false) ? (jsonlang::values::Value::Void())
 
 #define ARRAY jsonlang::values::Array()

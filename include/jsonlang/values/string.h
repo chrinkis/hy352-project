@@ -2,7 +2,6 @@
 
 #include <jsonlang/values/value.h>
 
-#include <cstddef>
 #include <string>
 
 namespace jsonlang {
@@ -31,7 +30,7 @@ class String : public Value {
   bool is_equal_to(const Value& other) const;
 
  public:
-  String(std::nullptr_t null);
+  String(Value::Void);
 };
 
 }  // namespace values

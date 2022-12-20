@@ -44,6 +44,6 @@ bool Null::is_equal_to(const Value& other) const {
   return dynamic_cast<const Null*>(&other);
 }
 
-Null::Null(std::nullptr_t null) {
+Null::Null(Value::Void) {
   assert(0);
 }

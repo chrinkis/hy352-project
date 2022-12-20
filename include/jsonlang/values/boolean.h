@@ -1,7 +1,6 @@
 #pragma once
 
 #include <jsonlang/values/value.h>
-#include <cstddef>
 
 namespace jsonlang {
 namespace values {
@@ -33,7 +32,7 @@ class Boolean : public Value {
   bool is_equal_to(const Value& other) const;
 
  public:
-  Boolean(std::nullptr_t null);
+  Boolean(Value::Void);
 };
 
 }  // namespace values

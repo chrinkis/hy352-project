@@ -59,6 +59,6 @@ bool Boolean::is_equal_to(const Value& other) const {
   return (this->data == other_boolean->data);
 }
 
-Boolean::Boolean(std::nullptr_t null) {
+Boolean::Boolean(Value::Void) {
   assert(0);
 }
