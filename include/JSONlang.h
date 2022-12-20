@@ -21,4 +21,4 @@
 #define OBJECT jsonlang::values::Object
 #define KEY(X) jsonlang::values::object::Key(STR(X)) <<= (false) ? (nullptr)
 
-#define ARRAY jsonlang::values::Array();
+#define ARRAY jsonlang::values::Array()
