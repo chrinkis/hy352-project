@@ -1,5 +1,8 @@
 cmake_minimum_required (VERSION 3.24.2)
 
+# for debugging
+set(CMAKE_BUILD_TYPE Debug)
+
 # For Clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
