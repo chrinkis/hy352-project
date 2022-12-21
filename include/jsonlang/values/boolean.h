@@ -29,7 +29,7 @@ class Boolean : public Value {
   operator std::string() const;
 
   Boolean* clone_to_heap() const;
-  bool is_equal_to(const Value& other) const;
+  bool eq_op(const Value& other) const;
 
  public:
   Boolean(Value::Void);

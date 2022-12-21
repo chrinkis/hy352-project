@@ -81,7 +81,7 @@ Value* Object::clone_to_heap() const {
   return new Object(*this);
 }
 
-bool Object::is_equal_to(const Value& other) const {
+bool Object::eq_op(const Value& other) const {
   const Object* other_object = dynamic_cast<const Object*>(&other);
 
   if (!other_object) {
@@ -103,7 +103,7 @@ bool Object::is_equal_to(const Value& other) const {
       return false;
     }
 
-    if (!other_value->is_equal_to(*value)) {
+    if (!other_value->eq_op(*value)) {
       return false;
     }
   }

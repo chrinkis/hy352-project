@@ -63,7 +63,7 @@ bool Array::operator==(const Array& other) const {
     return false;
         */
 
-  return this->is_equal_to(other);
+  return this->eq_op(other);
 }
 
 bool Array::operator!=(const Array& other) const {
@@ -105,7 +105,7 @@ Array::Array(Value::Void) {
   assert(0);
 }
 
-bool Array::is_equal_to(const Value& other) const {
+bool Array::eq_op(const Value& other) const {
   const Array* other_array = dynamic_cast<const Array*>(&other);
 
   if (!other_array) {
@@ -127,7 +127,7 @@ bool Array::is_equal_to(const Value& other) const {
       return false;
     }
 
-    if (!other_value->is_equal_to(*value)) {
+    if (!other_value->eq_op(*value)) {
       return false;
     }
   }

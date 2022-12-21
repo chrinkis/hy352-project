@@ -77,7 +77,7 @@ Number* Number::clone_to_heap() const {
   return new Number(*this);
 }
 
-bool Number::is_equal_to(const Value& other) const {
+bool Number::eq_op(const Value& other) const {
   const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {

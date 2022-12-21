@@ -36,7 +36,7 @@ String* String::clone_to_heap() const {
   return new String(*this);
 }
 
-bool String::is_equal_to(const Value& other) const {
+bool String::eq_op(const Value& other) const {
   const String* other_string = dynamic_cast<const String*>(&other);
 
   if (!other_string) {

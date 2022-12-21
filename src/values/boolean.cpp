@@ -49,7 +49,7 @@ Boolean* Boolean::clone_to_heap() const {
   return new Boolean(*this);
 }
 
-bool Boolean::is_equal_to(const Value& other) const {
+bool Boolean::eq_op(const Value& other) const {
   const Boolean* other_boolean = dynamic_cast<const Boolean*>(&other);
 
   if (!other_boolean) {

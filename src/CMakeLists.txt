@@ -8,4 +8,5 @@ target_sources(JSONlang
         values/object.cpp
         values/object/key.cpp
         values/string.cpp
+        values/value.cpp
 )
