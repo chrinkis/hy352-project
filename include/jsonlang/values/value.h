@@ -12,6 +12,9 @@ class Value {
   using Ptr = Value*;
 
  public:
+  virtual ~Value() {}
+
+ public:
   virtual int get_size() const = 0;
   virtual bool is_emtpy() const = 0;
   virtual bool has_key(const std::string& key) const = 0;
