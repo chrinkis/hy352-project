@@ -17,9 +17,13 @@ class Sequence {
 
  public:
   using Iterator = typename std::vector<T>::iterator;
+  using ConstIterator = typename std::vector<T>::const_iterator;
 
   Iterator begin() { return this->data.begin(); }
   Iterator end() { return this->data.end(); }
+
+  ConstIterator begin() const { return this->data.begin(); }
+  ConstIterator end() const { return this->data.end(); }
 };
 
 }  // namespace collections
