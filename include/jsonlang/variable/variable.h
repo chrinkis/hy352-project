@@ -14,7 +14,7 @@ class Variable {
   using ValuePtrSequence = collections::Sequence<ValuePtr>;
 
  private:
-  ValuePtr value_ptr;
+  ValuePtr value;
 
  private:
   ValuePtr parent;
