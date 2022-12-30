@@ -17,16 +17,16 @@ class Variable {
   ValuePtr value_ptr;
 
  private:
-  values::Value* parent = nullptr;
+  ValuePtr parent;
   int index_int = -1;
   std::string index_str;
 
  private:
   Variable(const values::Value& value,
-           values::Value* _parent,
+           ValuePtr _parent,
            const std::string& _index);
 
-  Variable(const values::Value& value, values::Value* _parent, int _index);
+  Variable(const values::Value& value, ValuePtr _parent, int _index);
 
  public:
   Variable(const values::Value& value);
