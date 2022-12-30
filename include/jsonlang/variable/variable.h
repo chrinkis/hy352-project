@@ -1,6 +1,6 @@
 #pragma once
 
-#include <collections/sequence.h>
+#include <jsonlang/collections/sequence.h>
 #include <jsonlang/values/value.h>
 #include <memory>
 #include <string>
