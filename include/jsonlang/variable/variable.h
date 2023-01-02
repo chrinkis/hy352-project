@@ -39,8 +39,8 @@ class Variable {
   Variable& operator=(const values::Value& value);
   Variable& operator+=(const values::Value& value);
   Variable& operator+=(const ValuePtrSequence& value);
-  Variable operator[](const std::string& _index);
-  Variable operator[](int _index);
+  const Variable operator[](const std::string& _index) const;
+  const Variable operator[](int _index) const;
   void erase();
 };
 
