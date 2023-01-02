@@ -33,7 +33,7 @@ class Variable {
   Variable(const Variable& other);
 
  public:
-  values::Value& get_value() const;
+  const values::Value& get_value() const;
 
  public:
   Variable& operator=(const values::Value& value);
