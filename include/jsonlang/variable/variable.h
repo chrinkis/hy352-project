@@ -38,8 +38,8 @@ class Variable {
  public:
   Variable& operator=(const values::Value& value);
   Variable& operator,(const values::Value& value);
-  const Variable operator[](const std::string& _index) const;
-  const Variable operator[](int _index) const;
+  Variable operator[](const std::string& _index) const;
+  Variable operator[](int _index) const;
   void erase();
 };
 
