@@ -30,6 +30,7 @@ class Value {
   virtual SmartPtr get(const std::string& key) const;
 
   virtual void append(const Value& value);
+  virtual void remove(const std::string index);
 
  public:  // TODO or protected ?
   virtual bool eq_op(const Value& other) const = 0;

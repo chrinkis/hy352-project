@@ -3,6 +3,7 @@
 #include <cassert>
 #include <memory>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 using namespace jsonlang::values;
@@ -74,6 +75,25 @@ void Array::append(const Value& value) {
   ValuePtr clone = ValuePtr(value.clone_to_heap());
 
   this->data.push_back(clone);
+}
+
+void Array::remove(const std::string index) {
+  int index_as_integer;
+
+  try {
+    index_as_integer = std::stoi(index);
+
+    assert(index_as_integer >= 0);
+    assert(index_as_integer < this->get_size());
+
+    this->data.erase(this->data.begin() + index_as_integer);
+
+  } catch (std::invalid_argument const& ex) {
+    assert(0);
+
+  } catch (std::out_of_range const& ex) {
+    assert(0);
+  }
 }
 
 int Array::get_size() const {
