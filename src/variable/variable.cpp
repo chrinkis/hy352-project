@@ -23,19 +23,13 @@ Appender Variable::operator+=(const values::Value& value) {
 
 Variable::Variable(const ValuePtr& _value,
                    ValuePtr _parent,
-                   const std::string& _index) {
-  this->value = _value;
-  this->parent = _parent;
-  this->index_str = _index;
-}
+                   const std::string& _index)
+    : value(_value), parent(_parent), index_str(_index) {}
 
-Variable::Variable(const ValuePtr& _value, ValuePtr _parent, int _index) {
+Variable::Variable(const ValuePtr& _value, ValuePtr _parent, int _index)
+    : value(_value), parent(_parent), index_int(_index) {
   assert(_index >= 0);
   assert(_index < _parent->get_size());
-
-  this->value = _value;
-  this->parent = _parent;
-  this->index_int = _index;
 }
 
 Variable::Variable(const values::Value& value) {
