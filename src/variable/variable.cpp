@@ -31,7 +31,7 @@ Variable::Variable(const ValuePtr& _value,
 
 Variable::Variable(const ValuePtr& _value, ValuePtr _parent, int _index) {
   assert(_index >= 0);
-  assert(_index < _value->get_size());
+  assert(_index < _parent->get_size());
 
   this->value = _value;
   this->parent = _parent;
