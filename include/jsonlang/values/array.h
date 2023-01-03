@@ -43,6 +43,9 @@ class Array : public Value {
   bool eq_op(const Value& other) const;
 
  public:
+  SmartPtr get(int i) const override;
+
+ public:
   Array(Value::Void);
 };
 

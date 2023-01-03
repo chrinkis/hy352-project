@@ -41,6 +41,9 @@ class Object : public Value {
   bool eq_op(const Value& other) const override;
 
  public:
+  SmartPtr get(const std::string& key) const override;
+
+ public:
   Object(Value::Void);
 };
 

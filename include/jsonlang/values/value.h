@@ -10,6 +10,7 @@ class Value {
  public:
   class Void {};
   using Ptr = Value*;
+  using SmartPtr = std::shared_ptr<Value>;
 
  public:
   virtual ~Value() {}
@@ -23,6 +24,10 @@ class Value {
   virtual operator std::string() const = 0;
 
   virtual Value* clone_to_heap() const = 0;
+
+ public:
+  virtual SmartPtr get(int i) const;
+  virtual SmartPtr get(const std::string& key) const;
 
  public:  // TODO or protected ?
   virtual bool eq_op(const Value& other) const = 0;

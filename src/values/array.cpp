@@ -135,6 +135,10 @@ bool Array::eq_op(const Value& other) const {
   return true;
 }
 
+Value::SmartPtr Array::get(int i) const {
+  return this->data.at(i);
+}
+
 Array::ValuePtrSequence& operator,(Array::ValuePtrSequence& seq,
                                    const jsonlang::values::Value& val) {
   Array::ValuePtr value_clone_shared_ptr(val.clone_to_heap());

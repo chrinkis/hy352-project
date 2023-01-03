@@ -111,6 +111,10 @@ bool Object::eq_op(const Value& other) const {
   return true;
 }
 
+Object::SmartPtr Object::get(const std::string& key) const {
+  return this->data.at(Key(key));
+}
+
 Object::Object(Value::Void) {
   assert(0);
 }

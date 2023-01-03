@@ -3,6 +3,14 @@
 
 using namespace jsonlang::values;
 
+Value::SmartPtr Value::get(int i) const {
+  assert(0);
+}
+
+Value::SmartPtr Value::get(const std::string& key) const {
+  assert(0);
+}
+
 bool Value::neq_op(const Value& other) const {
   return !this->eq_op(other);
 }
