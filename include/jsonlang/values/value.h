@@ -29,6 +29,8 @@ class Value {
   virtual SmartPtr get(int i) const;
   virtual SmartPtr get(const std::string& key) const;
 
+  virtual void append(const Value& value);
+
  public:  // TODO or protected ?
   virtual bool eq_op(const Value& other) const = 0;
   virtual bool neq_op(const Value& other) const;

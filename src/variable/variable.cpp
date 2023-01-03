@@ -13,3 +13,9 @@ Variable Variable::operator[](int index) const {
 
   return Variable(value, this->value, index);
 }
+
+Variable &Variable::operator,(const values::Value& value) {
+  this->value->append(value);
+
+  return *this;
+}

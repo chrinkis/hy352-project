@@ -31,6 +31,8 @@ class Array : public Value {
   bool operator==(const Array& other) const;
   bool operator!=(const Array& other) const;
 
+  void append(const Value& value) override;
+
  public:
   int get_size() const;
   bool is_emtpy() const;

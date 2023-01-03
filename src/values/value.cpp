@@ -11,6 +11,10 @@ Value::SmartPtr Value::get(const std::string& key) const {
   assert(0);
 }
 
+void Value::append(const Value& value) {
+  assert(0);
+}
+
 bool Value::neq_op(const Value& other) const {
   return !this->eq_op(other);
 }

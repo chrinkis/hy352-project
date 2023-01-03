@@ -70,6 +70,12 @@ bool Array::operator!=(const Array& other) const {
   return !(*this == other);
 }
 
+void Array::append(const Value& value) {
+  ValuePtr clone = ValuePtr(value.clone_to_heap());
+
+  this->data.push_back(clone);
+}
+
 int Array::get_size() const {
   return this->data.size();
 }
