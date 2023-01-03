@@ -31,6 +31,7 @@ class Value {
 
   virtual void append(const Value& value);
   virtual void remove(const std::string index);
+  virtual void clear();
 
  public:  // TODO or protected ?
   virtual bool eq_op(const Value& other) const = 0;

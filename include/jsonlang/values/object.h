@@ -30,6 +30,7 @@ class Object : public Value {
   Object operator+(const Object& other) const;
 
   void remove(const std::string index) override;
+  void clear() override;
 
  public:
   int get_size() const override;

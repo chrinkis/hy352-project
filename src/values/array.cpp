@@ -96,6 +96,10 @@ void Array::remove(const std::string index) {
   }
 }
 
+void Array::clear() {
+  this->data.clear();
+}
+
 int Array::get_size() const {
   return this->data.size();
 }

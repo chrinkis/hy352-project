@@ -50,6 +50,10 @@ void Object::remove(const std::string index) {
   this->data.erase(index);
 }
 
+void Object::clear() {
+  this->data.clear();
+}
+
 int Object::get_size() const {
   return this->data.size();
 }

@@ -33,6 +33,7 @@ class Array : public Value {
 
   void append(const Value& value) override;
   void remove(const std::string index) override;
+  void clear() override;
 
  public:
   int get_size() const;
