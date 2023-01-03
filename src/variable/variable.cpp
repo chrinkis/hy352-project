@@ -47,16 +47,14 @@ Variable::Variable(const Variable& other) {
 }
 
 void Variable::erase() {
-  std::string removal_index;
-
-  if (this->index_int == -1) {
-    removal_index = this->index_str;
-  } else {
-    removal_index = std::to_string(this->index_int);
-  }
-
   if (this->parent) {
-    this->parent->remove(removal_index);
+    if (this->index_int == -1) {
+      this->parent->remove(this->index_str);
+
+    } else {
+      this->parent->remove(this->index_int);
+    }
+
   } else {
     this->value->clear();
   }
