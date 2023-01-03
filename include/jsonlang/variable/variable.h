@@ -22,11 +22,8 @@ class Variable {
   std::string index_str;
 
  private:
-  Variable(const values::Value& value,
-           ValuePtr _parent,
-           const std::string& _index);
-
-  Variable(const values::Value& value, ValuePtr _parent, int _index);
+  Variable(const ValuePtr& _value, ValuePtr _parent, const std::string& _index);
+  Variable(const ValuePtr& _value, ValuePtr _parent, int _index);
 
  public:
   Variable(const values::Value& value);
