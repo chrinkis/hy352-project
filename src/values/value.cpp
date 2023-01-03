@@ -15,11 +15,11 @@ void Value::append(const Value& value) {
   assert(0);
 }
 
-void remove(const std::string index) {
+void Value::remove(const std::string index) {
   assert(0);
 }
 
-void remove(const int index) {
+void Value::remove(const int index) {
   assert(0);
 }
 
