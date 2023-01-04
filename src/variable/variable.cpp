@@ -20,7 +20,7 @@ Appender Variable::operator+=(const values::Value& value) {
   return (appender, value);
 }
 
-Variable::Variable(const SimpleValuePtr _value) : value(_value) {
+Variable::Variable(const SimpleValuePtr _value) : value(ValuePtr(_value)) {
   assert(_value);
 }
 
