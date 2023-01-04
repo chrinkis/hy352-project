@@ -1,4 +1,5 @@
 #include <variable/variable.h>
+#include <cassert>
 
 using namespace jsonlang::variable;
 Variable Variable::operator[](const std::string& index) const {
@@ -19,24 +20,28 @@ Appender Variable::operator+=(const values::Value& value) {
   return (appender, value);
 }
 
+Variable::Variable(const SimpleValuePtr _value) : value(_value) {
+  assert(_value);
+}
+
 Variable operator+(const Variable& left, const Variable& right) {
-  return Variable(*left.get_value().add_op(right.get_value()));
+  return Variable(left.get_value().add_op(right.get_value()));
 }
 
 Variable operator-(const Variable& left, const Variable& right) {
-  return Variable(*left.get_value().sub_op(right.get_value()));
+  return Variable(left.get_value().sub_op(right.get_value()));
 }
 
 Variable operator*(const Variable& left, const Variable& right) {
-  return Variable(*left.get_value().mul_op(right.get_value()));
+  return Variable(left.get_value().mul_op(right.get_value()));
 }
 
 Variable operator/(const Variable& left, const Variable& right) {
-  return Variable(*left.get_value().div_op(right.get_value()));
+  return Variable(left.get_value().div_op(right.get_value()));
 }
 
 Variable operator%(const Variable& left, const Variable& right) {
-  return Variable(*left.get_value().mod_op(right.get_value()));
+  return Variable(left.get_value().mod_op(right.get_value()));
 }
 
 bool operator>(const Variable& left, const Variable& right) {
