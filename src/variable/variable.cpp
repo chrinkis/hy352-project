@@ -32,13 +32,11 @@ Variable::Variable(const ValuePtr& _value, ValuePtr _parent, int _index)
   assert(_index < _parent->get_size());
 }
 
-Variable::Variable(const values::Value& value) {
-  this->value = ValuePtr(value.clone_to_heap());
-}
+Variable::Variable(const values::Value& _value)
+    : value(ValuePtr(_value.clone_to_heap())) {}
 
-Variable::Variable(const Variable& other) {
-  this->value = ValuePtr(other.value->clone_to_heap());
-}
+Variable::Variable(const Variable& other)
+    : value(ValuePtr(other.value->clone_to_heap())) {}
 
 void Variable::erase() {
   if (this->parent) {

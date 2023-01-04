@@ -29,7 +29,7 @@ class Variable {
   Variable(const ValuePtr& _value, ValuePtr _parent, int _index);
 
  public:
-  Variable(const values::Value& value);
+  Variable(const values::Value& _value);
   Variable(const Variable& other);
 
  public:
