@@ -1,7 +1,6 @@
 #include <variable/variable.h>
 
 using namespace jsonlang::variable;
-
 Variable Variable::operator[](const std::string& index) const {
   ValuePtr value = this->value->get(index);
 
