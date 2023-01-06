@@ -2,6 +2,7 @@
 
 #include <jsonlang/collections/sequence.h>
 #include <jsonlang/values/value.h>
+#include <jsonlang/variable/appender.h>
 #include <memory>
 #include <string>
 
@@ -9,6 +10,8 @@ namespace jsonlang {
 namespace variable {
 
 class Variable {
+  friend class Appender;
+
  public:
   using ValuePtr = std::shared_ptr<values::Value>;
   using ValuePtrSequence = collections::Sequence<ValuePtr>;
@@ -34,7 +37,7 @@ class Variable {
 
  public:
   Variable& operator=(const values::Value& value);
-  Variable& operator,(const values::Value& value);
+  Appender operator+=(const values::Value& value);
   Variable operator[](const std::string& _index) const;
   Variable operator[](int _index) const;
   void erase();
