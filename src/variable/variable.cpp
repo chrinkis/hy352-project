@@ -55,6 +55,7 @@ bool operator>=(const Variable& left, const Variable& right) {
 bool operator<(const Variable& left, const Variable& right) {
   return left.get_value().lt_op(right.get_value());
 }
+
 bool operator<=(const Variable& left, const Variable& right) {
   return left.get_value().le_op(right.get_value());
 }
