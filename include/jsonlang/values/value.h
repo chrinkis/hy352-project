@@ -1,5 +1,6 @@
 #pragma once
 
+#include <jsonlang/collections/sequence.h>
 #include <memory>
 #include <string>
 
@@ -10,6 +11,8 @@ class Value {
  public:
   class Void {};
   using Ptr = Value*;
+  using SharedPtr = std::shared_ptr<Value>;
+  using Sequence = collections::Sequence<SharedPtr>;
 
  public:
   virtual ~Value() {}

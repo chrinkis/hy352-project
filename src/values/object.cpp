@@ -10,7 +10,7 @@ using namespace jsonlang::values;
 Object::Object(std::initializer_list<Pair> pairs) {
   for (Object::Pair pair : pairs) {
     Object::Key key = pair.get_first();
-    Object::ValuePtr value_ptr = pair.get_second();
+    Object::SharedPtr value_ptr = pair.get_second();
 
     this->data[key] = value_ptr;
   }
@@ -19,9 +19,9 @@ Object::Object(std::initializer_list<Pair> pairs) {
 Object::Object(const Object& other) {
   for (auto pair : other.data) {
     Object::Key key = pair.first;
-    Object::ValuePtr value_ptr = pair.second;
+    Object::SharedPtr value_ptr = pair.second;
 
-    this->data[key] = Object::ValuePtr(value_ptr->clone_to_heap());
+    this->data[key] = Object::SharedPtr(value_ptr->clone_to_heap());
   }
 }
 
@@ -94,8 +94,8 @@ bool Object::eq_op(const Value& other) const {
 
   for (auto pair : this->data) {
     Key key = pair.first;
-    ValuePtr value = pair.second;
-    ValuePtr other_value;
+    SharedPtr value = pair.second;
+    SharedPtr other_value;
 
     try {
       other_value = other_object->data.at(key);
@@ -116,5 +116,5 @@ Object::Object(Value::Void) {
 }
 
 Object::Pair operator<<=(const Object::Key& key, const Value& value) {
-  return Object::Pair(key, Object::ValuePtr(value.clone_to_heap()));
+  return Object::Pair(key, Object::SharedPtr(value.clone_to_heap()));
 }

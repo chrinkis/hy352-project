@@ -10,23 +10,23 @@ using namespace jsonlang::values;
 Array::Array(const Array& other) {
   for (auto current_value : other.data) {
     auto current_value_clone = current_value->clone_to_heap();
-    ValuePtr current_value_clone_shared_ptr(current_value_clone);
+    SharedPtr current_value_clone_shared_ptr(current_value_clone);
     this->data.push_back(current_value_clone_shared_ptr);
   }
 }
 
-Array::Array() : data(std::vector<ValuePtr>()) {}
+Array::Array() : data(std::vector<SharedPtr>()) {}
 
 Array Array::operator[](const Value& single_data) {
   auto data_clone = single_data.clone_to_heap();
-  ValuePtr data_clone_shared_ptr(data_clone);
+  SharedPtr data_clone_shared_ptr(data_clone);
   this->data.push_back(data_clone_shared_ptr);
 
   return *this;
 }
 
 // should be const
-Array Array::operator[](ValuePtrSequence& data_sequence) {
+Array Array::operator[](Sequence& data_sequence) {
   for (auto current_value : data_sequence) {
     this->data.push_back(current_value);
   }
@@ -118,8 +118,8 @@ bool Array::eq_op(const Value& other) const {
 
   for (int current_index = 0; current_index < this->get_size();
        current_index++) {
-    ValuePtr value = this->data.at(current_index);
-    ValuePtr other_value;
+    SharedPtr value = this->data.at(current_index);
+    SharedPtr other_value;
 
     try {
       other_value = other_array->data.at(current_index);
@@ -135,9 +135,9 @@ bool Array::eq_op(const Value& other) const {
   return true;
 }
 
-Array::ValuePtrSequence& operator,(Array::ValuePtrSequence& seq,
-                                   const jsonlang::values::Value& val) {
-  Array::ValuePtr value_clone_shared_ptr(val.clone_to_heap());
+Array::Sequence& operator,(Array::Sequence& seq,
+                           const jsonlang::values::Value& val) {
+  Array::SharedPtr value_clone_shared_ptr(val.clone_to_heap());
 
   return (seq, value_clone_shared_ptr);
 }
