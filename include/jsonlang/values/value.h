@@ -48,5 +48,7 @@ class Value {
   virtual bool or_op(const Value& other) const;
 };
 
+Value::Sequence& operator,(Value::Sequence& seq, const Value& val);
+
 }  // namespace values
 }  // namespace jsonlang

@@ -134,10 +134,3 @@ bool Array::eq_op(const Value& other) const {
 
   return true;
 }
-
-Array::Sequence& operator,(Array::Sequence& seq,
-                           const jsonlang::values::Value& val) {
-  Array::SharedPtr value_clone_shared_ptr(val.clone_to_heap());
-
-  return (seq, value_clone_shared_ptr);
-}

@@ -43,7 +43,3 @@ class Array : public Value {
 
 }  // namespace values
 }  // namespace jsonlang
-
-jsonlang::values::Array::Sequence& operator,(
-    jsonlang::values::Array::Sequence& seq,
-    const jsonlang::values::Value& val);
