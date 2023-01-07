@@ -63,7 +63,7 @@ bool Value::or_op(const Value& other) const {
 namespace jsonlang {
 namespace values {
 
-Value::Sequence& operator,(Value::Sequence& seq, const Value& val) {
+Value::Sequence operator,(Value::Sequence seq, const Value& val) {
   return (seq, Value::SharedPtr(val.clone_to_heap()));
 }
 
