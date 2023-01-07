@@ -2,6 +2,15 @@
 
 using namespace jsonlang::variable;
 
+Variable& Variable::operator=(const values::Value& value) {
+  this->value = ValuePtr(value.clone_to_heap());
+  this->parent = ValuePtr();
+  this->index_int = -1;
+  this->index_str = std::string();
+
+  return *this;
+}
+
 Variable Variable::operator[](const std::string& index) const {
   ValuePtr value = this->value->get(index);
 
