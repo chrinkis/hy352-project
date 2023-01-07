@@ -19,3 +19,19 @@ Appender Variable::operator+=(const values::Value& value) {
 
   return (appender, value);
 }
+
+namespace jsonlang {
+namespace variable {
+
+Variable::ValuePtrSequence operator,(Variable::ValuePtrSequence seq,
+                                     const Variable& var) {
+  return (seq, Variable::ValuePtr(var.get_value().clone_to_heap()));
+}
+
+Variable::ValuePtrSequence operator,(const Variable& left,
+                                     const Variable& right) {
+  return (Variable::ValuePtrSequence(), left, right);
+}
+
+}  // namespace variable
+}  // namespace jsonlang

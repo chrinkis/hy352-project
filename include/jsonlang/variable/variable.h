@@ -43,6 +43,12 @@ class Variable {
   void erase();
 };
 
+Variable::ValuePtrSequence operator,(Variable::ValuePtrSequence seq,
+                                     const Variable& var);
+
+Variable::ValuePtrSequence operator,(const Variable& left,
+                                     const Variable& right);
+
 Variable operator+(const Variable& left, const Variable& right);
 Variable operator-(const Variable& left, const Variable& right);
 Variable operator*(const Variable& left, const Variable& right);
