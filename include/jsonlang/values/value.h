@@ -26,6 +26,7 @@ class Value {
   virtual operator std::string() const = 0;
 
   virtual Value* clone_to_heap() const = 0;
+  virtual Sequence operator,(const Value& other) final;
 
  public:  // TODO or protected ?
   virtual bool eq_op(const Value& other) const = 0;

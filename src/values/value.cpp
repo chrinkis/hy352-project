@@ -3,6 +3,11 @@
 
 using namespace jsonlang::values;
 
+Value::Sequence Value::operator,(const Value& other) {
+  return (Sequence(), SharedPtr(this->clone_to_heap()),
+          SharedPtr(other.clone_to_heap()));
+}
+
 bool Value::neq_op(const Value& other) const {
   return !this->eq_op(other);
 }
