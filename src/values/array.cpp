@@ -66,6 +66,14 @@ bool Array::operator==(const Array& other) const {
   return this->eq_op(other);
 }
 
+Array* Array::add_op(const Value& other) const {
+  assert(dynamic_cast<const Array*>(&other));
+
+  const Array* other_array = dynamic_cast<const Array*>(&other);
+
+  return (*this + *other_array).clone_to_heap();
+}
+
 bool Array::operator!=(const Array& other) const {
   return !(*this == other);
 }

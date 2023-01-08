@@ -36,6 +36,7 @@ class Array : public Value {
 
   Array* clone_to_heap() const;
   bool eq_op(const Value& other) const;
+  Array* add_op(const Value& other) const override;
 
  public:
   Array(Value::Void);
