@@ -46,6 +46,14 @@ bool String::eq_op(const Value& other) const {
   return this->data == other_string->data;
 }
 
+String* String::add_op(const Value& other) const {
+  assert(dynamic_cast<const String*>(&other));
+
+  const String* other_string = dynamic_cast<const String*>(&other);
+
+  return (*this + *other_string).clone_to_heap();
+}
+
 String::String(Value::Void) {
   assert(0);
 }
