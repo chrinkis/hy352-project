@@ -34,6 +34,12 @@ const jsonlang::values::Value& Variable::get_value() const {
   return *(this->value);
 }
 
+Variable::operator std::string() const {
+  assert(this->value);
+
+  return std::string(*this->value);
+}
+
 Variable::Variable(const ValuePtr& _value,
                    ValuePtr _parent,
                    const std::string& _index)
