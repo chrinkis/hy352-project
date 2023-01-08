@@ -29,6 +29,9 @@ class Object : public Value {
   Value& operator[](const std::string& key);
   Object operator+(const Object& other) const;
 
+  void remove(const std::string& index) override;
+  void clear() override;
+
  public:
   int get_size() const override;
   bool is_emtpy() const override;
