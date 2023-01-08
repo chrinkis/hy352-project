@@ -44,6 +44,34 @@ Object Object::operator+(const Object& other) const {
   return first;
 }
 
+bool Object::operator==(const Object& other) const {
+  if (this->data.size() != other.data.size()) {
+    return false;
+  }
+
+  for (auto pair : this->data) {
+    Key key = pair.first;
+    SharedPtr value = pair.second;
+    SharedPtr other_value;
+
+    try {
+      other_value = other.data.at(key);
+    } catch (std::out_of_range& out_of_range) {
+      return false;
+    }
+
+    if (!other_value->eq_op(*value)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+bool Object::operator!=(const Object& other) const {
+  return !(*this == other);
+}
+
 void Object::set_at(const std::string& index, const Value& value) {
   assert(this->has_key(index));
 
