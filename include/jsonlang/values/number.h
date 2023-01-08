@@ -37,6 +37,17 @@ class Number : public Value {
   Number* clone_to_heap() const;
   bool eq_op(const Value& other) const;
 
+  bool gt_op(const Value& other) const override;
+  bool ge_op(const Value& other) const override;
+  bool lt_op(const Value& other) const override;
+  bool le_op(const Value& other) const override;
+
+  Number* add_op(const Value& other) const override;
+  Number* sub_op(const Value& other) const override;
+  Number* mul_op(const Value& other) const override;
+  Number* div_op(const Value& other) const override;
+  Number* mod_op(const Value& other) const override;
+
  public:
   Number(Value::Void);
 };

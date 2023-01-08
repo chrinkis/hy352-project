@@ -87,6 +87,78 @@ bool Number::eq_op(const Value& other) const {
   return this->data == other_number->data;
 }
 
+bool Number::gt_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this > *other_number);
+}
+
+bool Number::ge_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this >= *other_number);
+}
+
+bool Number::lt_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this < *other_number);
+}
+
+bool Number::le_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this <= *other_number);
+}
+
+Number* Number::add_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this + *other_number).clone_to_heap();
+}
+
+Number* Number::sub_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this - *other_number).clone_to_heap();
+}
+
+Number* Number::mul_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this * *other_number).clone_to_heap();
+}
+
+Number* Number::div_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this / *other_number).clone_to_heap();
+}
+
+Number* Number::mod_op(const Value& other) const {
+  assert(static_cast<const Number*>(&other));
+
+  const Number* other_number = static_cast<const Number*>(&other);
+
+  return (*this % *other_number).clone_to_heap();
+}
+
 Number::Number(Value::Void) {
   assert(0);
 }
