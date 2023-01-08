@@ -15,7 +15,7 @@ void Value::append(const Value& value) {
   assert(0);
 }
 
-void Value::remove(const std::string index) {
+void Value::remove(const std::string& index) {
   assert(0);
 }
 

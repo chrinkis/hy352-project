@@ -44,7 +44,7 @@ Object Object::operator+(const Object& other) const {
   return first;
 }
 
-void Object::remove(const std::string index) {
+void Object::remove(const std::string& index) {
   assert(this->has_key(index));
 
   this->data.erase(index);
