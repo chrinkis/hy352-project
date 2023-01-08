@@ -25,6 +25,11 @@ class Array : public Value {
   bool operator==(const Array& other) const;
   bool operator!=(const Array& other) const;
 
+  void append(const Value& value) override;
+  void set_at(const int index, const Value& value) override;
+  void remove(const int index) override;
+  void clear() override;
+
  public:
   int get_size() const;
   bool is_emtpy() const;
@@ -36,6 +41,9 @@ class Array : public Value {
   Array* clone_to_heap() const;
   bool eq_op(const Value& other) const;
   Array* add_op(const Value& other) const override;
+
+ public:
+  SharedPtr get(int i) const override;
 
  public:
   Array(Value::Void);

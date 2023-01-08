@@ -29,6 +29,17 @@ class Value {
   virtual Value* clone_to_heap() const = 0;
   virtual Sequence operator,(const Value& other) final;
 
+ public:
+  virtual SharedPtr get(int i) const;
+  virtual SharedPtr get(const std::string& key) const;
+
+  virtual void append(const Value& value);
+  virtual void set_at(const std::string& index, const Value& value);
+  virtual void set_at(const int index, const Value& value);
+  virtual void remove(const std::string& index);
+  virtual void remove(const int index);
+  virtual void clear();
+
  public:  // TODO or protected ?
   virtual bool eq_op(const Value& other) const = 0;
   virtual bool neq_op(const Value& other) const;

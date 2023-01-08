@@ -3,6 +3,7 @@
 #include <cassert>
 #include <memory>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 using namespace jsonlang::values;
@@ -77,6 +78,29 @@ bool Array::operator!=(const Array& other) const {
   return !(*this == other);
 }
 
+void Array::append(const Value& value) {
+  SharedPtr clone = SharedPtr(value.clone_to_heap());
+
+  this->data.push_back(clone);
+}
+
+void Array::set_at(const int index, const Value& value) {
+  assert(index >= 0);
+  assert(index < this->get_size());
+
+  this->data[index] = SharedPtr(value.clone_to_heap());
+}
+
+void Array::remove(const int index) {
+  assert(index >= 0);
+  assert(index < this->get_size());
+  this->data.erase(this->data.begin() + index);
+}
+
+void Array::clear() {
+  this->data.clear();
+}
+
 int Array::get_size() const {
   return this->data.size();
 }
@@ -140,4 +164,15 @@ bool Array::eq_op(const Value& other) const {
   }
 
   return true;
+}
+
+Value::SharedPtr Array::get(int i) const {
+  return this->data.at(i);
+}
+
+Array::Sequence& operator,(Array::Sequence& seq,
+                           const jsonlang::values::Value& val) {
+  Array::SharedPtr value_clone_shared_ptr(val.clone_to_heap());
+
+  return (seq, value_clone_shared_ptr);
 }

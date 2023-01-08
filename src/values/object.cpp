@@ -44,6 +44,22 @@ Object Object::operator+(const Object& other) const {
   return first;
 }
 
+void Object::set_at(const std::string& index, const Value& value) {
+  assert(this->has_key(index));
+
+  this->data[Key(index)] = SharedPtr(value.clone_to_heap());
+}
+
+void Object::remove(const std::string& index) {
+  assert(this->has_key(index));
+
+  this->data.erase(index);
+}
+
+void Object::clear() {
+  this->data.clear();
+}
+
 int Object::get_size() const {
   return this->data.size();
 }
@@ -109,6 +125,10 @@ bool Object::eq_op(const Value& other) const {
   }
 
   return true;
+}
+
+Object::SharedPtr Object::get(const std::string& key) const {
+  return this->data.at(Key(key));
 }
 
 Object* Object::add_op(const Value& other) const {

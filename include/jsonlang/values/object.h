@@ -28,6 +28,10 @@ class Object : public Value {
   Value& operator[](const std::string& key);
   Object operator+(const Object& other) const;
 
+  void set_at(const std::string& index, const Value& value) override;
+  void remove(const std::string& index) override;
+  void clear() override;
+
  public:
   int get_size() const override;
   bool is_emtpy() const override;
@@ -39,6 +43,9 @@ class Object : public Value {
   Object* clone_to_heap() const override;
   bool eq_op(const Value& other) const override;
   Object* add_op(const Value& other) const override;
+
+ public:
+  SharedPtr get(const std::string& key) const override;
 
  public:
   Object(Value::Void);

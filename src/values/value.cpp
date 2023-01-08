@@ -3,6 +3,38 @@
 
 using namespace jsonlang::values;
 
+Value::SharedPtr Value::get(int i) const {
+  assert(0);
+}
+
+Value::SharedPtr Value::get(const std::string& key) const {
+  assert(0);
+}
+
+void Value::append(const Value& value) {
+  assert(0);
+}
+
+void Value::set_at(const std::string& index, const Value& value) {
+  assert(0);
+}
+
+void Value::set_at(const int index, const Value& value) {
+  assert(0);
+}
+
+void Value::remove(const std::string& index) {
+  assert(0);
+}
+
+void Value::remove(const int index) {
+  assert(0);
+}
+
+void Value::clear() {
+  assert(0);
+}
+
 Value::Sequence Value::operator,(const Value& other) {
   return (Sequence(), SharedPtr(this->clone_to_heap()),
           SharedPtr(other.clone_to_heap()));

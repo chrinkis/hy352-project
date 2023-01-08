@@ -1,5 +1,6 @@
 target_sources(JSONlang
     PRIVATE
+        variable/appender.cpp
         variable/variable.cpp
         values/array.cpp
         values/boolean.cpp
