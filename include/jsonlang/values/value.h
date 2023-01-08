@@ -30,6 +30,8 @@ class Value {
   virtual SmartPtr get(const std::string& key) const;
 
   virtual void append(const Value& value);
+  virtual void set_at(const std::string& index, const Value& value);
+  virtual void set_at(const int index, const Value& value);
   virtual void remove(const std::string& index);
   virtual void remove(const int index);
   virtual void clear();
