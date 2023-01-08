@@ -36,7 +36,7 @@ class Object : public Value {
 
   operator std::string() const override;
 
-  Value* clone_to_heap() const override;
+  Object* clone_to_heap() const override;
   bool eq_op(const Value& other) const override;
 
  public:

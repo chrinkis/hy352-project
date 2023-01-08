@@ -77,7 +77,7 @@ Object::operator std::string() const {
   return result;
 }
 
-Value* Object::clone_to_heap() const {
+Object* Object::clone_to_heap() const {
   return new Object(*this);
 }
 
