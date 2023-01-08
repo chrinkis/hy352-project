@@ -14,6 +14,7 @@ class Variable {
 
  public:
   using ValuePtr = std::shared_ptr<values::Value>;
+  using SimpleValuePtr = values::Value*;
   using ValuePtrSequence = collections::Sequence<ValuePtr>;
 
  private:
@@ -30,6 +31,7 @@ class Variable {
 
  public:
   Variable(const values::Value& _value);
+  Variable(const SimpleValuePtr _value);
   Variable(const Variable& other);
 
  public:
