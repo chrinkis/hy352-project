@@ -14,11 +14,10 @@ namespace values {
 class Object : public Value {
  public:
   using Key = jsonlang::values::object::Key;
-  using ValuePtr = std::shared_ptr<Value>;
-  using Pair = collections::Pair<Key, ValuePtr>;
+  using Pair = collections::Pair<Key, SharedPtr>;
 
  private:
-  std::map<Key, ValuePtr> data;
+  std::map<Key, SharedPtr> data;
 
  private:
   Object(const Object& other);
@@ -41,11 +40,12 @@ class Object : public Value {
 
   operator std::string() const override;
 
-  Value* clone_to_heap() const override;
+  Object* clone_to_heap() const override;
   bool eq_op(const Value& other) const override;
+  Object* add_op(const Value& other) const override;
 
  public:
-  SmartPtr get(const std::string& key) const override;
+  SharedPtr get(const std::string& key) const override;
 
  public:
   Object(Value::Void);

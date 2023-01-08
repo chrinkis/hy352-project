@@ -10,7 +10,7 @@ using namespace jsonlang::values;
 Object::Object(std::initializer_list<Pair> pairs) {
   for (Object::Pair pair : pairs) {
     Object::Key key = pair.get_first();
-    Object::ValuePtr value_ptr = pair.get_second();
+    Object::SharedPtr value_ptr = pair.get_second();
 
     this->data[key] = value_ptr;
   }
@@ -19,9 +19,9 @@ Object::Object(std::initializer_list<Pair> pairs) {
 Object::Object(const Object& other) {
   for (auto pair : other.data) {
     Object::Key key = pair.first;
-    Object::ValuePtr value_ptr = pair.second;
+    Object::SharedPtr value_ptr = pair.second;
 
-    this->data[key] = Object::ValuePtr(value_ptr->clone_to_heap());
+    this->data[key] = Object::SharedPtr(value_ptr->clone_to_heap());
   }
 }
 
@@ -47,7 +47,7 @@ Object Object::operator+(const Object& other) const {
 void Object::set_at(const std::string& index, const Value& value) {
   assert(this->has_key(index));
 
-  this->data[Key(index)] = ValuePtr(value.clone_to_heap());
+  this->data[Key(index)] = SharedPtr(value.clone_to_heap());
 }
 
 void Object::remove(const std::string& index) {
@@ -93,7 +93,7 @@ Object::operator std::string() const {
   return result;
 }
 
-Value* Object::clone_to_heap() const {
+Object* Object::clone_to_heap() const {
   return new Object(*this);
 }
 
@@ -110,8 +110,8 @@ bool Object::eq_op(const Value& other) const {
 
   for (auto pair : this->data) {
     Key key = pair.first;
-    ValuePtr value = pair.second;
-    ValuePtr other_value;
+    SharedPtr value = pair.second;
+    SharedPtr other_value;
 
     try {
       other_value = other_object->data.at(key);
@@ -127,8 +127,16 @@ bool Object::eq_op(const Value& other) const {
   return true;
 }
 
-Object::SmartPtr Object::get(const std::string& key) const {
+Object::SharedPtr Object::get(const std::string& key) const {
   return this->data.at(Key(key));
+}
+
+Object* Object::add_op(const Value& other) const {
+  assert(dynamic_cast<const Object*>(&other));
+
+  const Object* other_object = dynamic_cast<const Object*>(&other);
+
+  return (*this + *other_object).clone_to_heap();
 }
 
 Object::Object(Value::Void) {
@@ -136,5 +144,5 @@ Object::Object(Value::Void) {
 }
 
 Object::Pair operator<<=(const Object::Key& key, const Value& value) {
-  return Object::Pair(key, Object::ValuePtr(value.clone_to_heap()));
+  return Object::Pair(key, Object::SharedPtr(value.clone_to_heap()));
 }

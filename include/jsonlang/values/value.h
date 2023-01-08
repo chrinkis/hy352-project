@@ -1,6 +1,8 @@
 #pragma once
 
+#include <jsonlang/collections/sequence.h>
 #include <memory>
+#include <ostream>
 #include <string>
 
 namespace jsonlang {
@@ -10,7 +12,8 @@ class Value {
  public:
   class Void {};
   using Ptr = Value*;
-  using SmartPtr = std::shared_ptr<Value>;
+  using SharedPtr = std::shared_ptr<Value>;
+  using Sequence = collections::Sequence<SharedPtr>;
 
  public:
   virtual ~Value() {}
@@ -24,10 +27,11 @@ class Value {
   virtual operator std::string() const = 0;
 
   virtual Value* clone_to_heap() const = 0;
+  virtual Sequence operator,(const Value& other) final;
 
  public:
-  virtual SmartPtr get(int i) const;
-  virtual SmartPtr get(const std::string& key) const;
+  virtual SharedPtr get(int i) const;
+  virtual SharedPtr get(const std::string& key) const;
 
   virtual void append(const Value& value);
   virtual void set_at(const std::string& index, const Value& value);
@@ -55,6 +59,10 @@ class Value {
   virtual bool and_op(const Value& other) const;
   virtual bool or_op(const Value& other) const;
 };
+
+Value::Sequence operator,(Value::Sequence seq, const Value& val);
+
+std::ostream& operator<<(std::ostream& out, const Value& val);
 
 }  // namespace values
 }  // namespace jsonlang

@@ -28,6 +28,7 @@ class String : public Value {
 
   String* clone_to_heap() const override;
   bool eq_op(const Value& other) const override;
+  String* add_op(const Value& other) const override;
 
  public:
   String(Value::Void);

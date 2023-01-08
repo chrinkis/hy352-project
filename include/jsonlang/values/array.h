@@ -10,12 +10,7 @@ namespace jsonlang {
 namespace values {
 
 class Array : public Value {
- public:
-  using ValuePtr = std::shared_ptr<Value>;
-  using ValuePtrSequence = collections::Sequence<ValuePtr>;
-
- private:
-  std::vector<ValuePtr> data;
+  std::vector<SharedPtr> data;
 
  private:
   Array(const Array& other);
@@ -24,8 +19,7 @@ class Array : public Value {
   Array();
 
   Array operator[](const Value& single_data);
-  // should be const
-  Array operator[](ValuePtrSequence& data_sequence);
+  Array operator[](const Sequence& data_sequence);
   Value& operator[](const int index) const;
   Array operator+(const Array& other) const;
   bool operator==(const Array& other) const;
@@ -46,9 +40,10 @@ class Array : public Value {
 
   Array* clone_to_heap() const;
   bool eq_op(const Value& other) const;
+  Array* add_op(const Value& other) const override;
 
  public:
-  SmartPtr get(int i) const override;
+  SharedPtr get(int i) const override;
 
  public:
   Array(Value::Void);
@@ -56,7 +51,3 @@ class Array : public Value {
 
 }  // namespace values
 }  // namespace jsonlang
-
-jsonlang::values::Array::ValuePtrSequence& operator,(
-    jsonlang::values::Array::ValuePtrSequence& seq,
-    const jsonlang::values::Value& val);

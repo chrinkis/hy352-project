@@ -3,11 +3,11 @@
 
 using namespace jsonlang::values;
 
-Value::SmartPtr Value::get(int i) const {
+Value::SharedPtr Value::get(int i) const {
   assert(0);
 }
 
-Value::SmartPtr Value::get(const std::string& key) const {
+Value::SharedPtr Value::get(const std::string& key) const {
   assert(0);
 }
 
@@ -33,6 +33,11 @@ void Value::remove(const int index) {
 
 void Value::clear() {
   assert(0);
+}
+
+Value::Sequence Value::operator,(const Value& other) {
+  return (Sequence(), SharedPtr(this->clone_to_heap()),
+          SharedPtr(other.clone_to_heap()));
 }
 
 bool Value::neq_op(const Value& other) const {
@@ -86,3 +91,17 @@ bool Value::and_op(const Value& other) const {
 bool Value::or_op(const Value& other) const {
   assert(0);
 }
+
+namespace jsonlang {
+namespace values {
+
+Value::Sequence operator,(Value::Sequence seq, const Value& val) {
+  return (seq, Value::SharedPtr(val.clone_to_heap()));
+}
+
+std::ostream& operator<<(std::ostream& out, const Value& val) {
+  return out << std::string(val);
+}
+
+}  // namespace values
+}  // namespace jsonlang
