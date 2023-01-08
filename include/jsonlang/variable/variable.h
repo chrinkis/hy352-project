@@ -13,25 +13,28 @@ class Variable {
   friend class Appender;
 
  public:
-  using ValuePtr = std::shared_ptr<values::Value>;
-  using SimpleValuePtr = values::Value*;
-  using ValuePtrSequence = collections::Sequence<ValuePtr>;
+  using Value = values::Value;
 
  private:
-  ValuePtr value;
+  Value::SharedPtr value;
 
  private:
-  ValuePtr parent;
+  Value::SharedPtr parent;
   int index_int = -1;
   std::string index_str;
 
  private:
-  Variable(const ValuePtr& _value, ValuePtr _parent, const std::string& _index);
-  Variable(const ValuePtr& _value, ValuePtr _parent, int _index);
+  Variable(const Value::SharedPtr& _value,
+           Value::SharedPtr _parent,
+           const std::string& _index);
+
+  Variable(const Value::SharedPtr& _value,
+           Value::SharedPtr _parent,
+           int _index);
 
  public:
   Variable(const values::Value& _value);
-  Variable(const SimpleValuePtr _value);
+  Variable(const Value::Ptr _value);
   Variable(const Variable& other);
 
  public:
@@ -47,11 +50,11 @@ class Variable {
   void erase();
 };
 
-Variable::ValuePtrSequence operator,(Variable::ValuePtrSequence seq,
-                                     const Variable& var);
+Variable::Value::Sequence operator,(Variable::Value::Sequence seq,
+                                    const Variable& var);
 
-Variable::ValuePtrSequence operator,(const Variable& left,
-                                     const Variable& right);
+Variable::Value::Sequence operator,(const Variable& left,
+                                    const Variable& right);
 
 Variable operator+(const Variable& left, const Variable& right);
 Variable operator-(const Variable& left, const Variable& right);

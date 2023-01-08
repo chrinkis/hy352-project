@@ -4,13 +4,13 @@
 using namespace jsonlang::variable;
 
 Variable Variable::operator[](const std::string& index) const {
-  ValuePtr value = this->value->get(index);
+  Value::SharedPtr value = this->value->get(index);
 
   return Variable(value, this->value, index);
 }
 
 Variable Variable::operator[](int index) const {
-  ValuePtr value = this->value->get(index);
+  Value::SharedPtr value = this->value->get(index);
 
   return Variable(value, this->value, index);
 }
@@ -23,8 +23,8 @@ Variable& Variable::operator=(const values::Value& value) {
       this->parent->set_at(index_int, value);
     }
   } else {
-    this->value = ValuePtr(value.clone_to_heap());
-    this->parent = ValuePtr();
+    this->value = Value::SharedPtr(value.clone_to_heap());
+    this->parent = Value::SharedPtr();
     this->index_int = -1;
     this->index_str = std::string();
   }
@@ -48,22 +48,24 @@ Variable::operator std::string() const {
   return std::string(*this->value);
 }
 
-Variable::Variable(const ValuePtr& _value,
-                   ValuePtr _parent,
+Variable::Variable(const Value::SharedPtr& _value,
+                   Value::SharedPtr _parent,
                    const std::string& _index)
     : value(_value), parent(_parent), index_str(_index) {}
 
-Variable::Variable(const ValuePtr& _value, ValuePtr _parent, int _index)
+Variable::Variable(const Value::SharedPtr& _value,
+                   Value::SharedPtr _parent,
+                   int _index)
     : value(_value), parent(_parent), index_int(_index) {
   assert(_index >= 0);
   assert(_index < _parent->get_size());
 }
 
 Variable::Variable(const values::Value& _value)
-    : value(ValuePtr(_value.clone_to_heap())) {}
+    : value(Value::SharedPtr(_value.clone_to_heap())) {}
 
 Variable::Variable(const Variable& other)
-    : value(ValuePtr(other.value->clone_to_heap())) {}
+    : value(Value::SharedPtr(other.value->clone_to_heap())) {}
 
 void Variable::erase() {
   if (this->parent) {
@@ -79,7 +81,7 @@ void Variable::erase() {
   }
 }
 
-Variable::Variable(const SimpleValuePtr _value) : value(ValuePtr(_value)) {
+Variable::Variable(const Value::Ptr _value) : value(Value::SharedPtr(_value)) {
   assert(_value);
 }
 
@@ -142,14 +144,14 @@ bool operator!=(const Variable& left, const Variable& right) {
 namespace jsonlang {
 namespace variable {
 
-Variable::ValuePtrSequence operator,(Variable::ValuePtrSequence seq,
-                                     const Variable& var) {
-  return (seq, Variable::ValuePtr(var.get_value().clone_to_heap()));
+Variable::Value::Sequence operator,(Variable::Value::Sequence seq,
+                                    const Variable& var) {
+  return (seq, Variable::Value::SharedPtr(var.get_value().clone_to_heap()));
 }
 
-Variable::ValuePtrSequence operator,(const Variable& left,
-                                     const Variable& right) {
-  return (Variable::ValuePtrSequence(), left, right);
+Variable::Value::Sequence operator,(const Variable& left,
+                                    const Variable& right) {
+  return (Variable::Value::Sequence(), left, right);
 }
 
 }  // namespace variable
