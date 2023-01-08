@@ -32,6 +32,8 @@ class Array : public Value {
   bool operator!=(const Array& other) const;
 
   void append(const Value& value) override;
+  void remove(const int index) override;
+  void clear() override;
 
  public:
   int get_size() const;
