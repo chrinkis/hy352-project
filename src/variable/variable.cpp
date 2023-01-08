@@ -120,3 +120,19 @@ bool operator==(const Variable& left, const Variable& right) {
 bool operator!=(const Variable& left, const Variable& right) {
   return left.get_value().neq_op(right.get_value());
 }
+
+namespace jsonlang {
+namespace variable {
+
+Variable::ValuePtrSequence operator,(Variable::ValuePtrSequence seq,
+                                     const Variable& var) {
+  return (seq, Variable::ValuePtr(var.get_value().clone_to_heap()));
+}
+
+Variable::ValuePtrSequence operator,(const Variable& left,
+                                     const Variable& right) {
+  return (Variable::ValuePtrSequence(), left, right);
+}
+
+}  // namespace variable
+}  // namespace jsonlang
