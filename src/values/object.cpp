@@ -44,6 +44,12 @@ Object Object::operator+(const Object& other) const {
   return first;
 }
 
+void Object::set_at(const std::string& index, const Value& value) {
+  assert(this->has_key(index));
+
+  this->data[Key(index)] = ValuePtr(value.clone_to_heap());
+}
+
 void Object::remove(const std::string& index) {
   assert(this->has_key(index));
 
