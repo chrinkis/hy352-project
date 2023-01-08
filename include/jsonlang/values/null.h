@@ -16,15 +16,15 @@ class Null : public Value {
   bool operator!=(const Null& other) const;
 
  public:
-  int get_size() const;
-  bool is_emtpy() const;
-  bool has_key(const std::string& key) const;
-  const char* get_type() const;
+  int get_size() const override;
+  bool is_emtpy() const override;
+  bool has_key(const std::string& key) const override;
+  const char* get_type() const override;
 
-  operator std::string() const;
+  operator std::string() const override;
 
-  Null* clone_to_heap() const;
-  bool eq_op(const Value& other) const;
+  Null* clone_to_heap() const override;
+  bool eq_op(const Value& other) const override;
 
  public:
   Null(Value::Void);
