@@ -2,6 +2,7 @@
 
 #include <jsonlang/collections/sequence.h>
 #include <memory>
+#include <ostream>
 #include <string>
 
 namespace jsonlang {
@@ -49,6 +50,8 @@ class Value {
 };
 
 Value::Sequence operator,(Value::Sequence seq, const Value& val);
+
+std::ostream& operator<<(std::ostream& out, const Value& val);
 
 }  // namespace values
 }  // namespace jsonlang
