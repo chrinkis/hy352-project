@@ -1,3 +1,24 @@
+## For TAs
+
+### Team Members
+- Grigoroudis Nikolaos, csd4619@csd.uoc.gr
+- Christinakis Alexandros, csd4764@csd.uoc.gr
+
+### IDE
+- `NVIM v0.8.1`
+
+### C++ Version
+- version 11
+
+### Compilation/Run/Testing Process
+- compile: `bash compile.sh`
+- compile and run: `bash compile.sh -r`
+- compile and test: `bash compile.sh -t`
+- view code after preprocessor: `bash compile.sh -p`
+
+### Testing machine
+- name: `harpia`
+
 ## Development
 
 ### Code
