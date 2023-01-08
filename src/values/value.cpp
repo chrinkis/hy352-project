@@ -67,5 +67,9 @@ Value::Sequence operator,(Value::Sequence seq, const Value& val) {
   return (seq, Value::SharedPtr(val.clone_to_heap()));
 }
 
+std::ostream& operator<<(std::ostream& out, const Value& val) {
+  return out << std::string(val);
+}
+
 }  // namespace values
 }  // namespace jsonlang
