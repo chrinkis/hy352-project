@@ -31,6 +31,10 @@ class Boolean : public Value {
   Boolean* clone_to_heap() const;
   bool eq_op(const Value& other) const;
 
+  bool not_op() const override;
+  bool and_op(const Value& other) const override;
+  bool or_op(const Value& other) const override;
+
  public:
   Boolean(Value::Void);
 };
