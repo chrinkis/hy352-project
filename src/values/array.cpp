@@ -77,6 +77,13 @@ void Array::append(const Value& value) {
   this->data.push_back(clone);
 }
 
+void Array::set_at(const int index, const Value& value) {
+  assert(index >= 0);
+  assert(index < this->get_size());
+
+  this->data[index] = ValuePtr(value.clone_to_heap());
+}
+
 void Array::remove(const int index) {
   assert(index >= 0);
   assert(index < this->get_size());

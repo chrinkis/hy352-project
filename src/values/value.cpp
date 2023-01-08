@@ -15,6 +15,14 @@ void Value::append(const Value& value) {
   assert(0);
 }
 
+void Value::set_at(const std::string& index, const Value& value) {
+  assert(0);
+}
+
+void Value::set_at(const int index, const Value& value) {
+  assert(0);
+}
+
 void Value::remove(const std::string& index) {
   assert(0);
 }

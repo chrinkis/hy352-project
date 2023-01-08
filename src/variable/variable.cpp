@@ -16,10 +16,18 @@ Variable Variable::operator[](int index) const {
 }
 
 Variable& Variable::operator=(const values::Value& value) {
-  this->value = ValuePtr(value.clone_to_heap());
-  this->parent = ValuePtr();
-  this->index_int = -1;
-  this->index_str = std::string();
+  if (this->parent) {
+    if (this->index_int == -1) {
+      this->parent->set_at(index_str, value);
+    } else {
+      this->parent->set_at(index_int, value);
+    }
+  } else {
+    this->value = ValuePtr(value.clone_to_heap());
+    this->parent = ValuePtr();
+    this->index_int = -1;
+    this->index_str = std::string();
+  }
 
   return *this;
 }

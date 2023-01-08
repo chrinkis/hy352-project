@@ -32,6 +32,7 @@ class Array : public Value {
   bool operator!=(const Array& other) const;
 
   void append(const Value& value) override;
+  void set_at(const int index, const Value& value) override;
   void remove(const int index) override;
   void clear() override;
 
