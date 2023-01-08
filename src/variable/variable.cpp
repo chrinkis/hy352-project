@@ -30,6 +30,10 @@ Appender Variable::operator+=(const values::Value& value) {
   return (appender, value);
 }
 
+const jsonlang::values::Value& Variable::get_value() const {
+  return *(this->value);
+}
+
 Variable::Variable(const ValuePtr& _value,
                    ValuePtr _parent,
                    const std::string& _index)
