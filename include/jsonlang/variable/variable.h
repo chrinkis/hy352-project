@@ -37,6 +37,8 @@ class Variable {
  public:
   const values::Value& get_value() const;
 
+  operator std::string() const;
+
  public:
   Variable& operator=(const values::Value& value);
   Appender operator+=(const values::Value& value);
