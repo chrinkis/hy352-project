@@ -27,15 +27,15 @@ class Number : public Value {
   bool operator!=(const Number& other) const;
 
  public:
-  int get_size() const;
-  bool is_emtpy() const;
-  bool has_key(const std::string& key) const;
-  const char* get_type() const;
+  int get_size() const override;
+  bool is_emtpy() const override;
+  bool has_key(const std::string& key) const override;
+  const char* get_type() const override;
 
-  operator std::string() const;
+  operator std::string() const override;
 
-  Number* clone_to_heap() const;
-  bool eq_op(const Value& other) const;
+  Number* clone_to_heap() const override;
+  bool eq_op(const Value& other) const override;
 
   bool gt_op(const Value& other) const override;
   bool ge_op(const Value& other) const override;
