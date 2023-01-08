@@ -25,8 +25,7 @@ Array Array::operator[](const Value& single_data) {
   return *this;
 }
 
-// should be const
-Array Array::operator[](Sequence& data_sequence) {
+Array Array::operator[](const Sequence& data_sequence) {
   for (auto current_value : data_sequence) {
     this->data.push_back(current_value);
   }

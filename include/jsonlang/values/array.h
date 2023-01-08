@@ -19,8 +19,7 @@ class Array : public Value {
   Array();
 
   Array operator[](const Value& single_data);
-  // should be const
-  Array operator[](Sequence& data_sequence);
+  Array operator[](const Sequence& data_sequence);
   Value& operator[](const int index) const;
   Array operator+(const Array& other) const;
   bool operator==(const Array& other) const;
