@@ -14,6 +14,7 @@ class Variable {
 
  public:
   using ValuePtr = std::shared_ptr<values::Value>;
+  using SimpleValuePtr = values::Value*;
   using ValuePtrSequence = collections::Sequence<ValuePtr>;
 
  private:
@@ -29,7 +30,8 @@ class Variable {
   Variable(const ValuePtr& _value, ValuePtr _parent, int _index);
 
  public:
-  Variable(const values::Value& value);
+  Variable(const values::Value& _value);
+  Variable(const SimpleValuePtr _value);
   Variable(const Variable& other);
 
  public:
@@ -42,6 +44,12 @@ class Variable {
   Variable operator[](int _index) const;
   void erase();
 };
+
+Variable::ValuePtrSequence operator,(Variable::ValuePtrSequence seq,
+                                     const Variable& var);
+
+Variable::ValuePtrSequence operator,(const Variable& left,
+                                     const Variable& right);
 
 Variable operator+(const Variable& left, const Variable& right);
 Variable operator-(const Variable& left, const Variable& right);
