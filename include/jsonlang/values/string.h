@@ -18,6 +18,7 @@ class String : public Value {
 
   String operator+(const String& other) const;
   bool operator==(const String& other) const;
+  bool operator!=(const String& other) const;
 
  public:
   int get_size() const override;

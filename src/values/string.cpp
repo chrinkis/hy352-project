@@ -16,6 +16,10 @@ bool String::operator==(const String& other) const {
   return (this->data == other.data);
 }
 
+bool String::operator!=(const String& other) const {
+  return (this->data != other.data);
+}
+
 int String::get_size() const {
   return 1;
 }
