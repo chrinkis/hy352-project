@@ -3,6 +3,11 @@
 
 using namespace jsonlang::values;
 
+Value::Sequence Value::operator,(const Value& other) {
+  return (Sequence(), SharedPtr(this->clone_to_heap()),
+          SharedPtr(other.clone_to_heap()));
+}
+
 bool Value::neq_op(const Value& other) const {
   return !this->eq_op(other);
 }
@@ -54,3 +59,13 @@ bool Value::and_op(const Value& other) const {
 bool Value::or_op(const Value& other) const {
   assert(0);
 }
+
+namespace jsonlang {
+namespace values {
+
+Value::Sequence operator,(Value::Sequence seq, const Value& val) {
+  return (seq, Value::SharedPtr(val.clone_to_heap()));
+}
+
+}  // namespace values
+}  // namespace jsonlang

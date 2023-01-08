@@ -14,11 +14,10 @@ namespace values {
 class Object : public Value {
  public:
   using Key = jsonlang::values::object::Key;
-  using ValuePtr = std::shared_ptr<Value>;
-  using Pair = collections::Pair<Key, ValuePtr>;
+  using Pair = collections::Pair<Key, SharedPtr>;
 
  private:
-  std::map<Key, ValuePtr> data;
+  std::map<Key, SharedPtr> data;
 
  private:
   Object(const Object& other);
