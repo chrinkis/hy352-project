@@ -38,6 +38,7 @@ class Object : public Value {
 
   Object* clone_to_heap() const override;
   bool eq_op(const Value& other) const override;
+  Object* add_op(const Value& other) const override;
 
  public:
   Object(Value::Void);

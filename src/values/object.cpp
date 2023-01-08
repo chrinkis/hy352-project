@@ -111,6 +111,14 @@ bool Object::eq_op(const Value& other) const {
   return true;
 }
 
+Object* Object::add_op(const Value& other) const {
+  assert(dynamic_cast<const Object*>(&other));
+
+  const Object* other_object = dynamic_cast<const Object*>(&other);
+
+  return (*this + *other_object).clone_to_heap();
+}
+
 Object::Object(Value::Void) {
   assert(0);
 }
