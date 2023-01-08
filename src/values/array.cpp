@@ -53,17 +53,18 @@ Array Array::operator+(const Array& other) const {
   return first;
 }
 
-// TODO:
 bool Array::operator==(const Array& other) const {
-  /*if (this->get_size() != other.get_size())
+  if (this->get_size() != other.get_size())
     return false;
 
-  for (int current_index = 0; current_index < this->get_size(); current_index++)
-     if (*this->data[current_index] != *other.data[current_index])
-    return false;
-        */
+  for (int current_index = 0; current_index < this->get_size();
+       current_index++) {
+    if (!this->data[current_index]->eq_op(*other.data[current_index])) {
+      return false;
+    }
+  }
 
-  return this->eq_op(other);
+  return true;
 }
 
 Array* Array::add_op(const Value& other) const {
