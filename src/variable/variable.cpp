@@ -51,7 +51,9 @@ Variable::operator std::string() const {
 Variable::Variable(const Value::SharedPtr& _value,
                    Value::SharedPtr _parent,
                    const std::string& _index)
-    : value(_value), parent(_parent), index_str(_index) {}
+    : value(_value), parent(_parent), index_str(_index) {
+  assert(parent->has_key(index_str));
+}
 
 Variable::Variable(const Value::SharedPtr& _value,
                    Value::SharedPtr _parent,
