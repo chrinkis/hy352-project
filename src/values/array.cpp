@@ -155,11 +155,7 @@ bool Array::eq_op(const Value& other) const {
     SharedPtr value = this->data.at(current_index);
     SharedPtr other_value;
 
-    try {
-      other_value = other_array->data.at(current_index);
-    } catch (std::out_of_range& out_of_range) {
-      return false;
-    }
+    other_value = other_array->data.at(current_index);
 
     if (!other_value->eq_op(*value)) {
       return false;
