@@ -64,17 +64,21 @@ bool Boolean::not_op() const {
 }
 
 bool Boolean::and_op(const Value& other) const {
-  assert(dynamic_cast<const Boolean*>(&other));
-
   const Boolean* other_bool = dynamic_cast<const Boolean*>(&other);
+
+  if (!other_bool) {
+    throw errors::UnsupportedOperation();
+  }
 
   return (*this && *other_bool).data;
 }
 
 bool Boolean::or_op(const Value& other) const {
-  assert(dynamic_cast<const Boolean*>(&other));
-
   const Boolean* other_bool = dynamic_cast<const Boolean*>(&other);
+
+  if (!other_bool) {
+    throw errors::UnsupportedOperation();
+  }
 
   return (*this || *other_bool).data;
 }
