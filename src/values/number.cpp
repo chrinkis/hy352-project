@@ -81,7 +81,7 @@ bool Number::eq_op(const Value& other) const {
   const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
-    return false;
+    throw errors::UnsupportedOperation();
   }
 
   return this->data == other_number->data;
