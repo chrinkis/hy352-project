@@ -1,38 +1,37 @@
 #include <values/value.h>
-#include <cassert>
 
 using namespace jsonlang::values;
 
 Value::SharedPtr Value::get(int i) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 Value::SharedPtr Value::get(const std::string& key) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 void Value::append(const Value& value) {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 void Value::set_at(const std::string& index, const Value& value) {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 void Value::set_at(const int index, const Value& value) {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 void Value::remove(const std::string& index) {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 void Value::remove(const int index) {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 void Value::clear() {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 Value::Sequence Value::operator,(const Value& other) {
@@ -45,51 +44,51 @@ bool Value::neq_op(const Value& other) const {
 }
 
 bool Value::gt_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 bool Value::ge_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 bool Value::lt_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 bool Value::le_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 Value::Ptr Value::add_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 Value::Ptr Value::sub_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 Value::Ptr Value::mul_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 Value::Ptr Value::div_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 Value::Ptr Value::mod_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 bool Value::not_op() const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 bool Value::and_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 bool Value::or_op(const Value& other) const {
-  assert(0);
+  throw errors::UnsupportedOperation();
 }
 
 namespace jsonlang {

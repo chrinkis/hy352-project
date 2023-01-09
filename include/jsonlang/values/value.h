@@ -1,6 +1,7 @@
 #pragma once
 
 #include <jsonlang/collections/sequence.h>
+#include <jsonlang/errors/UnsupportedOperation.h>
 #include <memory>
 #include <ostream>
 #include <string>
@@ -58,6 +59,11 @@ class Value {
   virtual bool not_op() const;
   virtual bool and_op(const Value& other) const;
   virtual bool or_op(const Value& other) const;
+
+ public:
+  struct errors {
+    using UnsupportedOperation = jsonlang::errors::UnsupportedOperation;
+  };
 };
 
 Value::Sequence operator,(Value::Sequence seq, const Value& val);
