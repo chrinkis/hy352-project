@@ -68,9 +68,11 @@ bool Array::operator==(const Array& other) const {
 }
 
 Array* Array::add_op(const Value& other) const {
-  assert(dynamic_cast<const Array*>(&other));
-
   const Array* other_array = dynamic_cast<const Array*>(&other);
+
+  if (!other_array) {
+    throw errors::UnsupportedOperation();
+  }
 
   return (*this + *other_array).clone_to_heap();
 }
