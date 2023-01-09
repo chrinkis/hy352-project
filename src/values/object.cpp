@@ -129,7 +129,7 @@ bool Object::eq_op(const Value& other) const {
   const Object* other_object = dynamic_cast<const Object*>(&other);
 
   if (!other_object) {
-    return false;
+    throw errors::UnsupportedOperation();
   }
 
   if (this->data.size() != other_object->data.size()) {
@@ -143,11 +143,13 @@ bool Object::eq_op(const Value& other) const {
 
     try {
       other_value = other_object->data.at(key);
+
+      if (!other_value->eq_op(*value)) {
+        return false;
+      }
     } catch (std::out_of_range& out_of_range) {
       return false;
-    }
-
-    if (!other_value->eq_op(*value)) {
+    } catch (errors::UnsupportedOperation& e) {
       return false;
     }
   }
