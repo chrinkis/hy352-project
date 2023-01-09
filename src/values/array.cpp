@@ -161,7 +161,6 @@ bool Array::eq_op(const Value& other) const {
       if (!other_value->eq_op(*value)) {
         return false;
       }
-
     } catch (errors::UnsupportedOperation e) {
       return false;
     }
