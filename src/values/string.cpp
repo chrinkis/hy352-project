@@ -48,7 +48,7 @@ bool String::eq_op(const Value& other) const {
   const String* other_string = dynamic_cast<const String*>(&other);
 
   if (!other_string) {
-    return false;
+    throw errors::UnsupportedOperation();
   }
 
   return this->data == other_string->data;
