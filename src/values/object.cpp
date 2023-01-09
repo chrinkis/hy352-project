@@ -160,9 +160,11 @@ Object::SharedPtr Object::get(const std::string& key) const {
 }
 
 Object* Object::add_op(const Value& other) const {
-  assert(dynamic_cast<const Object*>(&other));
-
   const Object* other_object = dynamic_cast<const Object*>(&other);
+
+  if (!other_object) {
+    throw errors::UnsupportedOperation();
+  }
 
   return (*this + *other_object).clone_to_heap();
 }
