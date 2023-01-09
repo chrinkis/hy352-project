@@ -85,6 +85,9 @@ Variable::Variable(const Value::Ptr _value) : value(Value::SharedPtr(_value)) {
   assert(_value);
 }
 
+namespace jsonlang {
+namespace variable {
+
 Variable operator+(const Variable& left, const Variable& right) {
   return Variable(left.get_value().add_op(right.get_value()));
 }
@@ -140,9 +143,6 @@ bool operator==(const Variable& left, const Variable& right) {
 bool operator!=(const Variable& left, const Variable& right) {
   return left.get_value().neq_op(right.get_value());
 }
-
-namespace jsonlang {
-namespace variable {
 
 Variable::Value::Sequence operator,(Variable::Value::Sequence seq,
                                     const Variable& var) {
