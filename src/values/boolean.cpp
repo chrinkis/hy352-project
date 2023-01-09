@@ -53,7 +53,7 @@ bool Boolean::eq_op(const Value& other) const {
   const Boolean* other_boolean = dynamic_cast<const Boolean*>(&other);
 
   if (!other_boolean) {
-    return false;
+    throw errors::UnsupportedOperation();
   }
 
   return (this->data == other_boolean->data);
