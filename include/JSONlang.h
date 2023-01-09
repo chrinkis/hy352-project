@@ -4,23 +4,22 @@
 #include <jsonlang/values/number.h>
 #include <jsonlang/values/object.h>
 #include <jsonlang/values/string.h>
-#include "jsonlang/values/object/key.h"
+
+using namespace jsonlang::values;
 
 #define STR(S) #S
 
-#define STRING(X) jsonlang::values::String(X)
+#define STRING(X) String(X)
 
-#define NUMBER(X) jsonlang::values::Number(X)
+#define NUMBER(X) Number(X)
 
-#define TRUE jsonlang::values::Boolean(true)
-#define FALSE jsonlang::values::Boolean(false)
+#define TRUE Boolean(true)
+#define FALSE Boolean(false)
 
 #undef NULL
-#define NULL jsonlang::values::Null()
+#define NULL Null()
 
-#define OBJECT jsonlang::values::Object
-#define KEY(X)                              \
-  jsonlang::values::object::Key(STR(X)) <<= \
-      (false) ? (jsonlang::values::Value::Void())
+#define OBJECT Object
+#define KEY(X) Object::Key(STR(X)) <<= (false) ? (Value::Void())
 
-#define ARRAY jsonlang::values::Array()
+#define ARRAY Array()
