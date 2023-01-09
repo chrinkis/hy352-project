@@ -55,9 +55,11 @@ bool String::eq_op(const Value& other) const {
 }
 
 String* String::add_op(const Value& other) const {
-  assert(dynamic_cast<const String*>(&other));
-
   const String* other_string = dynamic_cast<const String*>(&other);
+
+  if (!other_string) {
+    throw errors::UnsupportedOperation();
+  }
 
   return (*this + *other_string).clone_to_heap();
 }
