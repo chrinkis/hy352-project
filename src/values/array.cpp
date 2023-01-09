@@ -143,7 +143,7 @@ bool Array::eq_op(const Value& other) const {
   const Array* other_array = dynamic_cast<const Array*>(&other);
 
   if (!other_array) {
-    return false;
+    throw errors::UnsupportedOperation();
   }
 
   if (this->get_size() != other_array->get_size()) {
@@ -157,7 +157,12 @@ bool Array::eq_op(const Value& other) const {
 
     other_value = other_array->data.at(current_index);
 
-    if (!other_value->eq_op(*value)) {
+    try {
+      if (!other_value->eq_op(*value)) {
+        return false;
+      }
+
+    } catch (errors::UnsupportedOperation e) {
       return false;
     }
   }
