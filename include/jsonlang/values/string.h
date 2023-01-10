@@ -16,10 +16,6 @@ class String : public Value {
  public:
   String(const std::string& _data);
 
-  String operator+(const String& other) const;
-  bool operator==(const String& other) const;
-  bool operator!=(const String& other) const;
-
  public:
   int get_size() const override;
   bool is_emtpy() const override;

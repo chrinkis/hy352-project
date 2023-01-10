@@ -8,18 +8,6 @@ String::String(const std::string& _data) : data(_data) {}
 
 String::String(const String& other) : data(other.data) {}
 
-String String::operator+(const String& other) const {
-  return String(this->data + other.data);
-}
-
-bool String::operator==(const String& other) const {
-  return (this->data == other.data);
-}
-
-bool String::operator!=(const String& other) const {
-  return (this->data != other.data);
-}
-
 int String::get_size() const {
   return 1;
 }
@@ -51,7 +39,7 @@ bool String::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this == *other_string);
+  return this->data == other_string->data;
 }
 
 String* String::add_op(const Value& other) const {
@@ -61,7 +49,10 @@ String* String::add_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this + *other_string).clone_to_heap();
+  String* result = this->clone_to_heap();
+  result->data += other_string->data;
+
+  return result;
 }
 
 String::String(Value::Void) {
