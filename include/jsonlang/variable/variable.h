@@ -4,6 +4,7 @@
 #include <jsonlang/values/value.h>
 #include <jsonlang/variable/appender.h>
 #include <memory>
+#include <ostream>
 #include <string>
 
 namespace jsonlang {
