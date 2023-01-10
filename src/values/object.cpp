@@ -73,8 +73,6 @@ bool Object::operator!=(const Object& other) const {
 }
 
 void Object::set_at(const std::string& index, const Value& value) {
-  assert(this->has_key(index));
-
   this->data[Key(index)] = SharedPtr(value.clone_to_heap());
 }
 
