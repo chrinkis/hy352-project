@@ -57,11 +57,14 @@ bool Array::operator==(const Array& other) const {
   if (this->get_size() != other.get_size())
     return false;
 
-  for (int current_index = 0; current_index < this->get_size();
-       current_index++) {
-    if (!this->data[current_index]->eq_op(*other.data[current_index])) {
-      return false;
+  try {
+    for (int i = 0; i < this->get_size(); i++) {
+      if (!this->data[i]->eq_op(*other.data[i])) {
+        return false;
+      }
     }
+  } catch (errors::UnsupportedOperation& e) {
+    return false;
   }
 
   return true;
