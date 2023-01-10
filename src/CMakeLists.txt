@@ -2,6 +2,7 @@ target_sources(JSONlang
     PRIVATE
         errors/UnsupportedOperation.cpp
         variable/appender.cpp
+        variable/eraser.cpp
         variable/variable.cpp
         values/array.cpp
         values/boolean.cpp
