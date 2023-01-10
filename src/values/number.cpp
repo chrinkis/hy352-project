@@ -1,5 +1,7 @@
 #include <values/number.h>
 
+#include <sstream>
+
 #include <cassert>
 #include <string>
 
@@ -70,7 +72,10 @@ const char* Number::get_type() const {
 }
 
 Number::operator std::string() const {
-  return std::to_string(this->data);
+  std::stringstream ss;
+  ss << this->data;
+
+  return ss.str();
 }
 
 Number* Number::clone_to_heap() const {
