@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [[ $1 = "-m" ]]; then
+    make clean &&
+        make jsonlang &&
+        make lib &&
+        make demo
+
+        exit
+fi
+
 if [[ $1 = "-t" ]]; then
     mkdir -p build &&
         cd build &&
