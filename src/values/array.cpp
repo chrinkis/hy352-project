@@ -150,27 +150,7 @@ bool Array::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  if (this->get_size() != other_array->get_size()) {
-    return false;
-  }
-
-  for (int current_index = 0; current_index < this->get_size();
-       current_index++) {
-    SharedPtr value = this->data.at(current_index);
-    SharedPtr other_value;
-
-    other_value = other_array->data.at(current_index);
-
-    try {
-      if (!other_value->eq_op(*value)) {
-        return false;
-      }
-    } catch (errors::UnsupportedOperation e) {
-      return false;
-    }
-  }
-
-  return true;
+  return (*this == *other_array);
 }
 
 Value::SharedPtr Array::get(int i) const {
