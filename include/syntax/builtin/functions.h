@@ -2,6 +2,7 @@
 
 #include <jsonlang/values/boolean.h>
 #include <jsonlang/values/number.h>
+#include <jsonlang/values/string.h>
 #include <jsonlang/values/value.h>
 #include <jsonlang/variable/variable.h>
 
@@ -14,7 +15,15 @@ using namespace jsonlang::variable;
 
 #define HAS_KEY(val_or_var, key) has_key(val_or_var, key)
 
-#define TYPE_OF  // TODO
+#define TYPE_OF(val_or_var) type_of(val_or_var)
+
+String type_of(const Value& value) {
+  return String(value.get_type());
+}
+
+String type_of(const Variable& variable) {
+  return String(variable.get_value().get_type());
+}
 
 Boolean has_key(const Value& value, const std::string& key) {
   return Boolean(value.has_key(key));
