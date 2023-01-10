@@ -43,6 +43,8 @@ SIZE_OF(ARRAY[NULL, NULL])  // doesn't works
 Other than that, we tried (and we think we accomplished it) to implement
 everything according to the project requirements.
 
+Also, we didn't have enough time to write unit tests.
+
 ### Testing machine
 - name: harpia
 
