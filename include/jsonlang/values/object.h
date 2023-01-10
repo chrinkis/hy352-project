@@ -16,10 +16,10 @@ class Object : public Value {
   using Key = jsonlang::values::object::Key;
   using Pair = collections::Pair<Key, SharedPtr>;
 
- public:  // TODO private
+ private:
   std::map<Key, SharedPtr> data;
 
- private:
+ public:  // TODO private
   Object(const Object& other);
 
  public:
