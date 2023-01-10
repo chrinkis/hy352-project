@@ -47,7 +47,7 @@ class Variable {
   Appender operator+=(const values::Value& value);
   Variable operator[](const std::string& _index) const;
   Variable operator[](int _index) const;
-  void erase();
+  void erase() const;
 
   operator Value&();
 };

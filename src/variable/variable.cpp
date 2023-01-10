@@ -51,7 +51,9 @@ Variable::operator std::string() const {
 Variable::Variable(const Value::SharedPtr& _value,
                    Value::SharedPtr _parent,
                    const std::string& _index)
-    : value(_value), parent(_parent), index_str(_index) {}
+    : value(_value), parent(_parent), index_str(_index) {
+  assert(parent->has_key(index_str));
+}
 
 Variable::Variable(const Value::SharedPtr& _value,
                    Value::SharedPtr _parent,
@@ -67,7 +69,7 @@ Variable::Variable(const values::Value& _value)
 Variable::Variable(const Variable& other)
     : value(Value::SharedPtr(other.value->clone_to_heap())) {}
 
-void Variable::erase() {
+void Variable::erase() const {
   if (this->parent) {
     if (this->index_int == -1) {
       this->parent->remove(this->index_str);
