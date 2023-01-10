@@ -1,5 +1,6 @@
 #pragma once
 
+#include <jsonlang/values/boolean.h>
 #include <jsonlang/values/value.h>
 #include <jsonlang/variable/variable.h>
 
@@ -14,10 +15,10 @@ using namespace jsonlang::variable;
 
 #define TYPE_OF  // TODO
 
-bool is_empty(const Value& value) {
-  return value.is_emtpy();
+Boolean is_empty(const Value& value) {
+  return Boolean(value.is_emtpy());
 }
 
-bool is_empty(const Variable& variable) {
-  return variable.get_value().is_emtpy();
+Boolean is_empty(const Variable& variable) {
+  return Boolean(variable.get_value().is_emtpy());
 }
