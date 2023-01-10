@@ -11,17 +11,17 @@ using namespace jsonlang::values;
 
 #define STR(S) #S
 
-#define STRING(X) String(X)
+#define STRING(X) (String((X)))
 
-#define NUMBER(X) Number(X)
+#define NUMBER(X) (Number((X)))
 
-#define TRUE Boolean(true)
-#define FALSE Boolean(false)
+#define TRUE (Boolean(true))
+#define FALSE (Boolean(false))
 
 #undef NULL
-#define NULL Null()
+#define NULL (Null())
 
 #define OBJECT Object
 #define KEY(X) Object::Key(STR(X)) <<= (false) ? (Value::Void())
 
-#define ARRAY Array()
+#define ARRAY (Array())
