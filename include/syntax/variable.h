@@ -1,5 +1,6 @@
 #pragma once
 
+#include <jsonlang/variable/eraser.h>
 #include <jsonlang/variable/variable.h>
 
 using namespace jsonlang::variable;
@@ -14,4 +15,6 @@ using namespace jsonlang::variable;
 
 #define APPEND +=
 
-#define ERASER  // TODO
+#define ERASE \
+  ;           \
+  Eraser() <<

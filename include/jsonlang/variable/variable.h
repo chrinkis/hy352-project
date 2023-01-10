@@ -48,6 +48,8 @@ class Variable {
   Variable operator[](const std::string& _index) const;
   Variable operator[](int _index) const;
   void erase() const;
+
+  operator Value&();
 };
 
 Variable::Value::Sequence operator,(Variable::Value::Sequence seq,
