@@ -1,3 +1,5 @@
+#pragma once
+
 #include <jsonlang/variable/variable.h>
 
 using namespace jsonlang::variable;
