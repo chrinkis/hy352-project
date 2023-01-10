@@ -50,8 +50,8 @@ Boolean operator<=(const Value& left, const Value& right) {
   return left.le_op(right);
 }
 
-Boolean operator!(const Value& left) {
-  return left.not_op();
+Boolean operator!(const Value& operand) {
+  return operand.not_op();
 }
 
 Boolean operator&&(const Value& left, const Value& right) {
