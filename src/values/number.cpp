@@ -11,50 +11,6 @@ Number::Number(const float _data) : data(_data) {}
 
 Number::Number(const Number& other) : data(other.data) {}
 
-Number Number::operator+(const Number& other) const {
-  return Number(this->data + other.data);
-}
-
-Number Number::operator-(const Number& other) const {
-  return Number(this->data - other.data);
-}
-Number Number::operator*(const Number& other) const {
-  return Number(this->data * other.data);
-}
-
-Number Number::operator/(const Number& other) const {
-  return Number(this->data / other.data);
-}
-
-Number Number::operator%(const Number& other) const {
-  // float numbers do not allow modulo operator ("%").
-  return Number(static_cast<int>(this->data) % static_cast<int>(other.data));
-}
-
-bool Number::operator>(const Number& other) const {
-  return (this->data > other.data);
-}
-
-bool Number::operator>=(const Number& other) const {
-  return (this->data >= other.data);
-}
-
-bool Number::operator<(const Number& other) const {
-  return (this->data < other.data);
-}
-
-bool Number::operator<=(const Number& other) const {
-  return (this->data <= other.data);
-}
-
-bool Number::operator==(const Number& other) const {
-  return (this->data == other.data);
-}
-
-bool Number::operator!=(const Number& other) const {
-  return (this->data != other.data);
-}
-
 int Number::get_size() const {
   return 1;
 }
@@ -89,7 +45,7 @@ bool Number::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this == *other_number);
+  return (this->data == other_number->data);
 }
 
 bool Number::gt_op(const Value& other) const {
@@ -99,7 +55,7 @@ bool Number::gt_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this > *other_number);
+  return (this->data > other_number->data);
 }
 
 bool Number::ge_op(const Value& other) const {
@@ -109,7 +65,7 @@ bool Number::ge_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this >= *other_number);
+  return (this->data >= other_number->data);
 }
 
 bool Number::lt_op(const Value& other) const {
@@ -119,7 +75,7 @@ bool Number::lt_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this < *other_number);
+  return (this->data < other_number->data);
 }
 
 bool Number::le_op(const Value& other) const {
@@ -129,7 +85,7 @@ bool Number::le_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this <= *other_number);
+  return (this->data <= other_number->data);
 }
 
 Number* Number::add_op(const Value& other) const {
@@ -139,7 +95,7 @@ Number* Number::add_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this + *other_number).clone_to_heap();
+  return Number(this->data + other_number->data).clone_to_heap();
 }
 
 Number* Number::sub_op(const Value& other) const {
@@ -149,7 +105,7 @@ Number* Number::sub_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this - *other_number).clone_to_heap();
+  return Number(this->data - other_number->data).clone_to_heap();
 }
 
 Number* Number::mul_op(const Value& other) const {
@@ -159,7 +115,7 @@ Number* Number::mul_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this * *other_number).clone_to_heap();
+  return Number(this->data * other_number->data).clone_to_heap();
 }
 
 Number* Number::div_op(const Value& other) const {
@@ -169,7 +125,7 @@ Number* Number::div_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this / *other_number).clone_to_heap();
+  return Number(this->data / other_number->data).clone_to_heap();
 }
 
 Number* Number::mod_op(const Value& other) const {
@@ -179,7 +135,9 @@ Number* Number::mod_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this % *other_number).clone_to_heap();
+  return Number(static_cast<int>(this->data) %
+                static_cast<int>(other_number->data))
+      .clone_to_heap();
 }
 
 Number::Number(Value::Void) {
