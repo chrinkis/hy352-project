@@ -89,9 +89,15 @@ void Array::append(const Value& value) {
 
 void Array::set_at(const int index, const Value& value) {
   assert(index >= 0);
-  assert(index < this->get_size());
+  assert(index <= this->get_size());
 
-  this->data[index] = SharedPtr(value.clone_to_heap());
+  if (index < this->data.size()) {
+    this->data[index] = SharedPtr(value.clone_to_heap());
+  } else if (index == this->data.size()) {
+    this->data.push_back(SharedPtr(value.clone_to_heap()));
+  } else {
+    assert(0);
+  }
 }
 
 void Array::remove(const int index) {
