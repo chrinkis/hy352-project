@@ -8,14 +8,6 @@ Null::Null() {}
 
 Null::Null(const Null& other) {}
 
-bool Null::operator==(const Null& other) const {
-  return true;
-}
-
-bool Null::operator!=(const Null& other) const {
-  return false;
-}
-
 int Null::get_size() const {
   return 1;
 }
@@ -41,13 +33,7 @@ Null* Null::clone_to_heap() const {
 }
 
 bool Null::eq_op(const Value& other) const {
-  const Null* other_null = dynamic_cast<const Null*>(&other);
-
-  if (!other_null) {
-    throw errors::UnsupportedOperation();
-  }
-
-  return (*this == *other_null);
+  return dynamic_cast<const Null*>(&other);
 }
 
 Null::Null(Value::Void) {
