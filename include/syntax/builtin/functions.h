@@ -13,7 +13,7 @@ using namespace jsonlang::variable;
 
 #define IS_EMPTY(val_or_var) (is_empty((val_or_var)))
 
-#define HAS_KEY(val_or_var, key) (has_key((val_or_var, key)))
+#define HAS_KEY(val_or_var, key) (has_key(val_or_var, key))
 
 #define TYPE_OF(val_or_var) (type_of((val_or_var)))
 
