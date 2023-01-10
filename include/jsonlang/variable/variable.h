@@ -4,6 +4,7 @@
 #include <jsonlang/values/value.h>
 #include <jsonlang/variable/appender.h>
 #include <memory>
+#include <ostream>
 #include <string>
 
 namespace jsonlang {
@@ -76,6 +77,8 @@ bool operator!(const Variable& left);
 
 bool operator==(const Variable& left, const Variable& right);
 bool operator!=(const Variable& left, const Variable& right);
+
+std::ostream& operator<<(std::ostream& out, const Variable& var);
 
 }  // namespace variable
 }  // namespace jsonlang
