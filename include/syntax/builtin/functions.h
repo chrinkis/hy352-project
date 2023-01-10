@@ -1,5 +1,6 @@
 #pragma once
 
+#include <jsonlang/values/string.h>
 #include <jsonlang/values/value.h>
 #include <jsonlang/variable/variable.h>
 
@@ -14,10 +15,10 @@ using namespace jsonlang::variable;
 
 #define TYPE_OF(val_or_var) type_of(val_or_var)
 
-std::string type_of(const Value& value) {
-  return value.get_type();
+String type_of(const Value& value) {
+  return String(value.get_type());
 }
 
-std::string type_of(const Variable& variable) {
-  return variable.get_value().get_type();
+String type_of(const Variable& variable) {
+  return String(variable.get_value().get_type());
 }
