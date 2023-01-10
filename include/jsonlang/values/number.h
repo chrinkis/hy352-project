@@ -8,7 +8,7 @@ namespace values {
 class Number : public Value {
   float data;
 
- private:
+ public:  // TODO private
   Number(const Number& other);
 
  public:

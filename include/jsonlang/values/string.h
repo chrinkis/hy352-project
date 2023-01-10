@@ -10,7 +10,7 @@ namespace values {
 class String : public Value {
   std::string data;
 
- private:
+ public:  // TODO private
   String(const String& other);
 
  public:
