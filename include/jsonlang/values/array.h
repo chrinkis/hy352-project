@@ -21,9 +21,6 @@ class Array : public Value {
   Array operator[](const Value& single_data);
   Array operator[](const Sequence& data_sequence);
   Value& operator[](const int index) const;
-  Array operator+(const Array& other) const;
-  bool operator==(const Array& other) const;
-  bool operator!=(const Array& other) const;
 
   void append(const Value& value) override;
   void set_at(const int index, const Value& value) override;
