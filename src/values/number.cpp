@@ -1,5 +1,7 @@
 #include <values/number.h>
 
+#include <sstream>
+
 #include <cassert>
 #include <string>
 
@@ -70,7 +72,10 @@ const char* Number::get_type() const {
 }
 
 Number::operator std::string() const {
-  return std::to_string(this->data);
+  std::stringstream ss;
+  ss << this->data;
+
+  return ss.str();
 }
 
 Number* Number::clone_to_heap() const {
@@ -84,11 +89,11 @@ bool Number::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return this->data == other_number->data;
+  return (*this == *other_number);
 }
 
 bool Number::gt_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
@@ -98,7 +103,7 @@ bool Number::gt_op(const Value& other) const {
 }
 
 bool Number::ge_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
@@ -108,7 +113,7 @@ bool Number::ge_op(const Value& other) const {
 }
 
 bool Number::lt_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
@@ -118,7 +123,7 @@ bool Number::lt_op(const Value& other) const {
 }
 
 bool Number::le_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
@@ -128,7 +133,7 @@ bool Number::le_op(const Value& other) const {
 }
 
 Number* Number::add_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
@@ -138,7 +143,7 @@ Number* Number::add_op(const Value& other) const {
 }
 
 Number* Number::sub_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
@@ -148,7 +153,7 @@ Number* Number::sub_op(const Value& other) const {
 }
 
 Number* Number::mul_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
@@ -158,7 +163,7 @@ Number* Number::mul_op(const Value& other) const {
 }
 
 Number* Number::div_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
@@ -168,7 +173,7 @@ Number* Number::div_op(const Value& other) const {
 }
 
 Number* Number::mod_op(const Value& other) const {
-  const Number* other_number = static_cast<const Number*>(&other);
+  const Number* other_number = dynamic_cast<const Number*>(&other);
 
   if (!other_number) {
     throw errors::UnsupportedOperation();
