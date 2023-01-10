@@ -33,6 +33,9 @@ class Variable {
            Value::SharedPtr _parent,
            int _index);
 
+  Variable(Value::SharedPtr _parent, const std::string& _index);
+  Variable(Value::SharedPtr _parent, int _index);
+
  public:
   Variable(const values::Value& _value);
   Variable(const Value::Ptr _value);
