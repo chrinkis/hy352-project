@@ -8,26 +8,6 @@ Boolean::Boolean(const bool _data) : data(_data) {}
 
 Boolean::Boolean(const Boolean& other) : data(other.data) {}
 
-Boolean Boolean::operator&&(const Boolean& other) const {
-  return Boolean(this->data && other.data);
-}
-
-Boolean Boolean::operator||(const Boolean& other) const {
-  return Boolean(this->data || other.data);
-}
-
-Boolean Boolean::operator!() const {
-  return Boolean(!this->data);
-}
-
-bool Boolean::operator==(const Boolean& other) const {
-  return (this->data == other.data);
-}
-
-bool Boolean::operator!=(const Boolean& other) const {
-  return (this->data != other.data);
-}
-
 int Boolean::get_size() const {
   return 1;
 }
@@ -56,7 +36,7 @@ bool Boolean::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this == *other_boolean);
+  return (this->data == other_boolean->data);
 }
 
 bool Boolean::not_op() const {
@@ -70,7 +50,7 @@ bool Boolean::and_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this && *other_bool).data;
+  return (this->data && other_bool->data);
 }
 
 bool Boolean::or_op(const Value& other) const {
@@ -80,7 +60,7 @@ bool Boolean::or_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this || *other_bool).data;
+  return (this->data || other_bool->data);
 }
 
 Boolean::Boolean(Value::Void) {
