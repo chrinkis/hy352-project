@@ -51,7 +51,7 @@ bool String::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return this->data == other_string->data;
+  return (*this == *other_string);
 }
 
 String* String::add_op(const Value& other) const {
