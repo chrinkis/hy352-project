@@ -56,11 +56,13 @@ bool Object::operator==(const Object& other) const {
 
     try {
       other_value = other.data.at(key);
+
+      if (!other_value->eq_op(*value)) {
+        return false;
+      }
     } catch (std::out_of_range& out_of_range) {
       return false;
-    }
-
-    if (!other_value->eq_op(*value)) {
+    } catch (errors::UnsupportedOperation& e) {
       return false;
     }
   }
