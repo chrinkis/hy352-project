@@ -4,15 +4,23 @@
 using namespace jsonlang::variable;
 
 Variable Variable::operator[](const std::string& index) const {
-  Value::SharedPtr value = this->value->get(index);
+  try {
+    Value::SharedPtr value = this->value->get(index);
 
-  return Variable(value, this->value, index);
+    return Variable(value, this->value, index);
+  } catch (std::out_of_range& e) {
+    return Variable(this->value, index);
+  }
 }
 
 Variable Variable::operator[](int index) const {
-  Value::SharedPtr value = this->value->get(index);
+  try {
+    Value::SharedPtr value = this->value->get(index);
 
-  return Variable(value, this->value, index);
+    return Variable(value, this->value, index);
+  } catch (std::out_of_range& e) {
+    return Variable(this->value, index);
+  }
 }
 
 Variable& Variable::operator=(const values::Value& value) {
@@ -61,6 +69,16 @@ Variable::Variable(const Value::SharedPtr& _value,
     : value(_value), parent(_parent), index_int(_index) {
   assert(_index >= 0);
   assert(_index < _parent->get_size());
+}
+
+Variable::Variable(Value::SharedPtr _parent, const std::string& _index)
+    : value(), parent(_parent), index_str(_index) {
+  assert(!_parent->has_key(_index));
+}
+
+Variable::Variable(Value::SharedPtr _parent, int _index)
+    : value(), parent(_parent), index_int(_index) {
+  assert(_parent->get_size() == _index);
 }
 
 Variable::Variable(const values::Value& _value)
