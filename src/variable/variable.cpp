@@ -51,7 +51,9 @@ Variable::operator std::string() const {
 Variable::Variable(const Value::SharedPtr& _value,
                    Value::SharedPtr _parent,
                    const std::string& _index)
-    : value(_value), parent(_parent), index_str(_index) {}
+    : value(_value), parent(_parent), index_str(_index) {
+  assert(parent->has_key(index_str));
+}
 
 Variable::Variable(const Value::SharedPtr& _value,
                    Value::SharedPtr _parent,
@@ -79,6 +81,10 @@ void Variable::erase() const {
   } else {
     this->value->clear();
   }
+}
+
+Variable::operator Value&() {
+  return *this->value;
 }
 
 Variable::Variable(const Value::Ptr _value) : value(Value::SharedPtr(_value)) {
@@ -152,6 +158,10 @@ Variable::Value::Sequence operator,(Variable::Value::Sequence seq,
 Variable::Value::Sequence operator,(const Variable& left,
                                     const Variable& right) {
   return (Variable::Value::Sequence(), left, right);
+}
+
+std::ostream& operator<<(std::ostream& out, const Variable& var) {
+  return out << std::string(var);
 }
 
 }  // namespace variable

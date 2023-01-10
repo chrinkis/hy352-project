@@ -4,6 +4,7 @@
 #include <jsonlang/values/value.h>
 #include <jsonlang/variable/appender.h>
 #include <memory>
+#include <ostream>
 #include <string>
 
 namespace jsonlang {
@@ -48,6 +49,8 @@ class Variable {
   Variable operator[](const std::string& _index) const;
   Variable operator[](int _index) const;
   void erase() const;
+
+  operator Value&();
 };
 
 Variable::Value::Sequence operator,(Variable::Value::Sequence seq,
@@ -74,6 +77,8 @@ bool operator!(const Variable& left);
 
 bool operator==(const Variable& left, const Variable& right);
 bool operator!=(const Variable& left, const Variable& right);
+
+std::ostream& operator<<(std::ostream& out, const Variable& var);
 
 }  // namespace variable
 }  // namespace jsonlang
