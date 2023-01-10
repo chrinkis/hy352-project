@@ -84,7 +84,7 @@ bool Number::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return this->data == other_number->data;
+  return (*this == *other_number);
 }
 
 bool Number::gt_op(const Value& other) const {
