@@ -42,35 +42,6 @@ Value& Array::operator[](const int index) const {
   return *this->data[index];
 }
 
-Array Array::operator+(const Array& other) const {
-  Array first = Array(*this);
-  Array second = Array(other);
-
-  for (auto current_value : second.data) {
-    first.data.push_back(current_value);
-  }
-
-  return first;
-}
-
-bool Array::operator==(const Array& other) const {
-  if (this->get_size() != other.get_size()) {
-    return false;
-  }
-
-  try {
-    for (int i = 0; i < this->get_size(); i++) {
-      if (!this->data[i]->eq_op(*other.data[i])) {
-        return false;
-      }
-    }
-  } catch (errors::UnsupportedOperation& e) {
-    return false;
-  }
-
-  return true;
-}
-
 Array* Array::add_op(const Value& other) const {
   const Array* other_array = dynamic_cast<const Array*>(&other);
 
@@ -78,11 +49,14 @@ Array* Array::add_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this + *other_array).clone_to_heap();
-}
+  Array* first = this->clone_to_heap();
+  Array second = Array(*other_array);
 
-bool Array::operator!=(const Array& other) const {
-  return !(*this == other);
+  for (auto current_value : second.data) {
+    first->data.push_back(current_value);
+  }
+
+  return first;
 }
 
 void Array::append(const Value& value) {
@@ -156,7 +130,21 @@ bool Array::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this == *other_array);
+  if (this->get_size() != other_array->get_size()) {
+    return false;
+  }
+
+  try {
+    for (int i = 0; i < this->get_size(); i++) {
+      if (!this->data[i]->eq_op(*other_array->data[i])) {
+        return false;
+      }
+    }
+  } catch (errors::UnsupportedOperation& e) {
+    return false;
+  }
+
+  return true;
 }
 
 Value::SharedPtr Array::get(int i) const {
