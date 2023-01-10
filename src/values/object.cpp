@@ -33,47 +33,6 @@ Value& Object::operator[](const std::string& key) {
   return *result;
 }
 
-Object Object::operator+(const Object& other) const {
-  Object first = Object(*this);
-  Object second = Object(other);
-
-  for (auto pair : second.data) {
-    first.data[pair.first] = pair.second;
-  }
-
-  return first;
-}
-
-bool Object::operator==(const Object& other) const {
-  if (this->data.size() != other.data.size()) {
-    return false;
-  }
-
-  for (auto pair : this->data) {
-    Key key = pair.first;
-    SharedPtr value = pair.second;
-    SharedPtr other_value;
-
-    try {
-      other_value = other.data.at(key);
-
-      if (!other_value->eq_op(*value)) {
-        return false;
-      }
-    } catch (std::out_of_range& out_of_range) {
-      return false;
-    } catch (errors::UnsupportedOperation& e) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-bool Object::operator!=(const Object& other) const {
-  return !(*this == other);
-}
-
 void Object::set_at(const std::string& index, const Value& value) {
   this->data[Key(index)] = SharedPtr(value.clone_to_heap());
 }
@@ -132,7 +91,29 @@ bool Object::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this == *other_object);
+  if (this->data.size() != other_object->data.size()) {
+    return false;
+  }
+
+  for (auto pair : this->data) {
+    Key key = pair.first;
+    SharedPtr value = pair.second;
+    SharedPtr other_value;
+
+    try {
+      other_value = other_object->data.at(key);
+
+      if (!other_value->eq_op(*value)) {
+        return false;
+      }
+    } catch (std::out_of_range& out_of_range) {
+      return false;
+    } catch (errors::UnsupportedOperation& e) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 Object::SharedPtr Object::get(const std::string& key) const {
@@ -146,7 +127,14 @@ Object* Object::add_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (*this + *other_object).clone_to_heap();
+  Object* result = this->clone_to_heap();
+  Object second = Object(*other_object);
+
+  for (auto pair : second.data) {
+    result->data[pair.first] = pair.second;
+  }
+
+  return result;
 }
 
 Object::Object(Value::Void) {

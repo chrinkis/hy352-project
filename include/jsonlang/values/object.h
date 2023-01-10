@@ -26,9 +26,6 @@ class Object : public Value {
   Object(std::initializer_list<Pair>);
 
   Value& operator[](const std::string& key);
-  Object operator+(const Object& other) const;
-  bool operator==(const Object& other) const;
-  bool operator!=(const Object& other) const;
 
   void set_at(const std::string& index, const Value& value) override;
   void remove(const std::string& index) override;
