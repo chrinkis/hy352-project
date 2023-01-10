@@ -1,5 +1,6 @@
 #pragma once
 
+#include <jsonlang/values/boolean.h>
 #include <jsonlang/values/value.h>
 #include <jsonlang/variable/variable.h>
 
@@ -14,10 +15,10 @@ using namespace jsonlang::variable;
 
 #define TYPE_OF  // TODO
 
-bool has_key(const Value& value, const std::string& key) {
-  return value.has_key(key);
+Boolean has_key(const Value& value, const std::string& key) {
+  return Boolean(value.has_key(key));
 }
 
-bool has_key(const Variable& variable, const std::string& key) {
-  return variable.get_value().has_key(key);
+Boolean has_key(const Variable& variable, const std::string& key) {
+  return Boolean(variable.get_value().has_key(key));
 }
