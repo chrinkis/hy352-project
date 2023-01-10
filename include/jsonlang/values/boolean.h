@@ -14,12 +14,6 @@ class Boolean : public Value {
  public:
   Boolean(const bool _data);
 
-  Boolean operator&&(const Boolean& other) const;
-  Boolean operator||(const Boolean& other) const;
-  Boolean operator!() const;
-  bool operator==(const Boolean& other) const;
-  bool operator!=(const Boolean& other) const;
-
  public:
   int get_size() const override;
   bool is_emtpy() const override;
