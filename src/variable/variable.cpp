@@ -81,6 +81,10 @@ void Variable::erase() {
   }
 }
 
+Variable::operator Value&() {
+  return *this->value;
+}
+
 Variable::Variable(const Value::Ptr _value) : value(Value::SharedPtr(_value)) {
   assert(_value);
 }
