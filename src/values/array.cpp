@@ -54,8 +54,9 @@ Array Array::operator+(const Array& other) const {
 }
 
 bool Array::operator==(const Array& other) const {
-  if (this->get_size() != other.get_size())
+  if (this->get_size() != other.get_size()) {
     return false;
+  }
 
   try {
     for (int i = 0; i < this->get_size(); i++) {
