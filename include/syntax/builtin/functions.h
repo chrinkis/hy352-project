@@ -12,9 +12,17 @@ using namespace jsonlang::variable;
 
 #define IS_EMPTY(val_or_var) is_empty(val_or_var)
 
-#define HAS_KEY  // TODO
+#define HAS_KEY(val_or_var, key) has_key(val_or_var, key)
 
 #define TYPE_OF  // TODO
+
+Boolean has_key(const Value& value, const std::string& key) {
+  return Boolean(value.has_key(key));
+}
+
+Boolean has_key(const Variable& variable, const std::string& key) {
+  return Boolean(variable.get_value().has_key(key));
+}
 
 Boolean is_empty(const Value& value) {
   return Boolean(value.is_emtpy());
