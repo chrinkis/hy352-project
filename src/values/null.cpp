@@ -41,11 +41,13 @@ Null* Null::clone_to_heap() const {
 }
 
 bool Null::eq_op(const Value& other) const {
-  if (!dynamic_cast<const Null*>(&other)) {
+  const Null* other_null = dynamic_cast<const Null*>(&other);
+
+  if (!other_null) {
     throw errors::UnsupportedOperation();
   }
 
-  return true;
+  return (*this == *other_null);
 }
 
 Null::Null(Value::Void) {
