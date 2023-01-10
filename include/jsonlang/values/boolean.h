@@ -8,7 +8,7 @@ namespace values {
 class Boolean : public Value {
   bool data;
 
- private:
+ public:  // TODO private
   Boolean(const Boolean& other);
 
  public:

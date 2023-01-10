@@ -12,7 +12,7 @@ namespace values {
 class Array : public Value {
   std::vector<SharedPtr> data;
 
- private:
+ public:  // TODO private
   Array(const Array& other);
 
  public:

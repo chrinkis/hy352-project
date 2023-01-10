@@ -6,7 +6,7 @@ namespace jsonlang {
 namespace values {
 
 class Null : public Value {
- private:
+ public:  // TODO private
   Null(const Null& other);
 
  public:

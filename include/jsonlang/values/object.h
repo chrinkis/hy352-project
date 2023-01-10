@@ -16,7 +16,7 @@ class Object : public Value {
   using Key = jsonlang::values::object::Key;
   using Pair = collections::Pair<Key, SharedPtr>;
 
- private:
+ public:  // TODO private
   std::map<Key, SharedPtr> data;
 
  private:
