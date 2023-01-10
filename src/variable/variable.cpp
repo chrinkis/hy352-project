@@ -154,5 +154,9 @@ Variable::Value::Sequence operator,(const Variable& left,
   return (Variable::Value::Sequence(), left, right);
 }
 
+std::ostream& operator<<(std::ostream& out, const Variable& var) {
+  return out << std::string(var);
+}
+
 }  // namespace variable
 }  // namespace jsonlang

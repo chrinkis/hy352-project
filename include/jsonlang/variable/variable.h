@@ -75,5 +75,7 @@ bool operator!(const Variable& left);
 bool operator==(const Variable& left, const Variable& right);
 bool operator!=(const Variable& left, const Variable& right);
 
+std::ostream& operator<<(std::ostream& out, const Variable& var);
+
 }  // namespace variable
 }  // namespace jsonlang
