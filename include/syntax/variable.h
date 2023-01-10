@@ -1,3 +1,5 @@
+#pragma once
+
 #include <jsonlang/variable/eraser.h>
 #include <jsonlang/variable/variable.h>
 
