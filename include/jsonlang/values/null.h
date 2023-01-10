@@ -12,9 +12,6 @@ class Null : public Value {
  public:
   Null();
 
-  bool operator==(const Null& other) const;
-  bool operator!=(const Null& other) const;
-
  public:
   int get_size() const override;
   bool is_emtpy() const override;
