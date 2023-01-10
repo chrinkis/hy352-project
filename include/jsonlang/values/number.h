@@ -14,6 +14,7 @@ class Number : public Value {
  public:
   Number(const float _data);
 
+  /*
   Number operator+(const Number& other) const;
   Number operator-(const Number& other) const;
   Number operator*(const Number& other) const;
@@ -25,6 +26,7 @@ class Number : public Value {
   bool operator<=(const Number& other) const;
   bool operator==(const Number& other) const;
   bool operator!=(const Number& other) const;
+  */
 
  public:
   int get_size() const override;
