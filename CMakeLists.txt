@@ -1,5 +1,8 @@
 cmake_minimum_required (VERSION 3.24.2)
 
+# Activate C++ 11
+set (CMAKE_CXX_STANDARD 11)
+
 # for debugging
 set(CMAKE_BUILD_TYPE Debug)
 
