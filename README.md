@@ -1,4 +1,44 @@
-## Development
+## For TAs
+
+### Team Members
+- Grigoroudis Nikolaos, csd4619@csd.uoc.gr
+- Christinakis Alexandros, csd4764@csd.uoc.gr
+
+### IDE (not exactly)
+Both developers used [Neovim](https://neovim.io/) with
+[Clangd](https://clangd.llvm.org/) for language server. For debuging we used
+[VSCodium](https://vscodium.com/) with
+[CodeLLDB](https://open-vsx.org/extension/vadimcn/vscode-lldb).
+
+### C++ Version
+- C++11
+
+### Compilation/Run/Testing Process
+
+#### Using cmake (recommended)
+- compile: `bash compile.sh`
+- compile and run: `bash compile.sh -r`
+- compile and test: `bash compile.sh -t`
+- view code after preprocessor: `bash compile.sh -p`
+
+#### Using make
+- compile: `bash compile.sh -m`
+- compile and run: `bash compile.sh -m && ./demo.out`
+- compile and test: not supported
+- view code after preprocessor: not supported
+
+> In order to run the unit tests, you need to have cloned the
+[Catch2](https://github.com/catchorg/Catch2) library into `lib/Catch2`
+(in root directory of the project).
+
+### Things to note
+We tried (and we think we accomplished it) to implement everything according
+to the project requirements.
+
+### Testing machine
+- name: harpia
+
+## For Developers
 
 ### Code
 1. Use `this` inside a method to access class data or methods
