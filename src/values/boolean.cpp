@@ -56,7 +56,7 @@ bool Boolean::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  return (this->data == other_boolean->data);
+  return (*this == *other_boolean);
 }
 
 bool Boolean::not_op() const {
