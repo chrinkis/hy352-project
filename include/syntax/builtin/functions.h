@@ -1,5 +1,6 @@
 #pragma once
 
+#include <jsonlang/values/number.h>
 #include <jsonlang/values/value.h>
 #include <jsonlang/variable/variable.h>
 
@@ -14,10 +15,10 @@ using namespace jsonlang::variable;
 
 #define TYPE_OF  // TODO
 
-int size_of(const Value& value) {
-  return value.get_size();
+Number size_of(const Value& value) {
+  return Number(value.get_size());
 }
 
-int size_of(const Variable& variable) {
-  return variable.get_value().get_size();
+Number size_of(const Variable& variable) {
+  return Number(variable.get_value().get_size());
 }
