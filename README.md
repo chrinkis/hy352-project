@@ -32,8 +32,16 @@ Both developers used [Neovim](https://neovim.io/) with
 (in root directory of the project).
 
 ### Things to note
-We tried (and we think we accomplished it) to implement everything according
-to the project requirements.
+In order to use `,` inside a defined macro, you need to enclose it in
+parenthesis. For example:
+
+```cpp
+SIZE_OF((ARRAY[NULL, NULL]))  // works
+SIZE_OF(ARRAY[NULL, NULL])  // doesn't works
+```
+
+Other than that, we tried (and we think we accomplished it) to implement
+everything according to the project requirements.
 
 ### Testing machine
 - name: harpia
