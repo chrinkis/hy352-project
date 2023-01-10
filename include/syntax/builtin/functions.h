@@ -9,13 +9,13 @@
 using namespace jsonlang::values;
 using namespace jsonlang::variable;
 
-#define SIZE_OF(val_or_var) (size_of((val_or_var)))
+#define SIZE_OF(...) size_of(__VA_ARGS__)
 
-#define IS_EMPTY(val_or_var) (is_empty((val_or_var)))
+#define IS_EMPTY(...) is_empty(__VA_ARGS__)
 
-#define HAS_KEY(val_or_var, key) (has_key((val_or_var), key))
+#define HAS_KEY(...) has_key(__VA_ARGS__)
 
-#define TYPE_OF(val_or_var) (type_of((val_or_var)))
+#define TYPE_OF(...) type_of(__VA_ARGS__)
 
 String type_of(const Value& value) {
   return String(value.get_type());
