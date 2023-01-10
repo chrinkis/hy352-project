@@ -134,29 +134,7 @@ bool Object::eq_op(const Value& other) const {
     throw errors::UnsupportedOperation();
   }
 
-  if (this->data.size() != other_object->data.size()) {
-    return false;
-  }
-
-  for (auto pair : this->data) {
-    Key key = pair.first;
-    SharedPtr value = pair.second;
-    SharedPtr other_value;
-
-    try {
-      other_value = other_object->data.at(key);
-
-      if (!other_value->eq_op(*value)) {
-        return false;
-      }
-    } catch (std::out_of_range& out_of_range) {
-      return false;
-    } catch (errors::UnsupportedOperation& e) {
-      return false;
-    }
-  }
-
-  return true;
+  return (*this == *other_object);
 }
 
 Object::SharedPtr Object::get(const std::string& key) const {
