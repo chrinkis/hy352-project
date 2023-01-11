@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.24.2)
+cmake_minimum_required (VERSION 3.18.4)
 
 # Activate C++ 11
 set (CMAKE_CXX_STANDARD 11)
