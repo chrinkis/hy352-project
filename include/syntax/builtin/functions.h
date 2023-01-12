@@ -9,6 +9,8 @@
 using namespace jsonlang::values;
 using namespace jsonlang::variable;
 
+// Use variable args in order to support `,` inside the macros
+
 #define SIZE_OF(...) size_of(__VA_ARGS__)
 
 #define IS_EMPTY(...) is_empty(__VA_ARGS__)
