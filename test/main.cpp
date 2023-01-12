@@ -83,7 +83,7 @@ PROGRAM_BEGIN
   PRINT STRING("-------Variable functions---------")
 
   PRINT STRING("Size of "), student, STRING(" : "), SIZE_OF(student)
-  PRINT STRING("Size of "), ARRAY[NULL, NULL], STRING(" : "), SIZE_OF((ARRAY[NULL,NULL]))
+  PRINT STRING("Size of "), ARRAY[NULL, NULL], STRING(" : "), SIZE_OF(ARRAY[NULL,NULL])
   PRINT STRING("Size of "), NULL, STRING(" : "), SIZE_OF(NULL)
   PRINT STRING("Is [] empty? "), IS_EMPTY(ARRAY)
   PRINT STRING("Is {name: someone} empty? "), IS_EMPTY(OBJECT{KEY(name) : STRING("someone")})
