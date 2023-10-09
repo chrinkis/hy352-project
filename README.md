@@ -1,3 +1,8 @@
+## Repository status
+
+This repository is an unmaintained mirror of the repository
+[niex/hy352-project](https://gitlab-csd.datacenter.uoc.gr/niex/hy352-project).
+
 ## For TAs
 
 ### Team Members
